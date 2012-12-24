@@ -1,5 +1,5 @@
 - commentable ||= comment.commentable_type.constantize.find comment.commentable_id
-- author = comment.author_id.nil? ? nil : User.find(comment.author_id)
+- author = comment.author_id.nil? ? nil : BicycleCms::UserDecorator.find(comment.author_id)
 
 - unless comment.new_record?
   = div_for comment do

@@ -71,13 +71,6 @@ module BicycleCms
         end
       end
 
-      def create_resource(object)
-        attributes[1] ||= {}
-        attributes[1][:as] ||= current_user_role_for(action_name =~ /new|create/ ? build_resource : resource) if params[:id] # TODO Как определить, есть ли resource?
-
-        super
-      end
-
       def update_resource(object, attributes)
         attributes[1] ||= {}
         attributes[1][:as] ||= current_user_role_for(action_name =~ /new|create/ ? build_resource : resource) if params[:id] # TODO Как определить, есть ли resource?
