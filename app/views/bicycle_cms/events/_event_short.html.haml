@@ -7,4 +7,4 @@
       = image_tag event.thumbnail.medium.url
   .description
     = eval_in_erb_sandbox event.description.html_safe, binding
-    = link_to(t('events.actions_short.more'), event, class: :more) if event.body.present?
+    = link_to(t('bicycle_cms/events.actions_short.more'), event, class: :more) if event.body.present?

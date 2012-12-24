@@ -31,7 +31,7 @@ module BicycleCms
     define_default_scopes is_active: :is_published, created_at: :published_at
 
     def date_title
-      published_at.to_s(:date_short) + title.presense('') { ". #{title}" }
+      l(published_at, format: :date_short) + title.presense('') { ". #{title}" }
     end
 
   end

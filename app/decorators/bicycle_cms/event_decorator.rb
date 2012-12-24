@@ -26,5 +26,9 @@ module BicycleCms
       ]
     end
 
+    def date_title
+      l(published_at, format: :date_short) + title.presense('') { ". #{title}" }
+    end
+
   end
 end
