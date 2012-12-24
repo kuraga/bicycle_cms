@@ -1,0 +1,23 @@
+ru:
+  bicycle_cms/orders:
+    main:
+      order: Заказ
+      orders: Заказы
+    attributes:
+      created_at: Оставлено
+      name: Ваше имя
+      email: Ваш e-mail
+      comment: Комментарий
+      total_price: Общая стоимость
+      quantity: Количество
+    actions:
+      new: Оформить заказ...
+      create: Заказать!
+    actions_short:
+      new: Заказ...
+      create: Заказать!
+    messages:
+      create:
+        success: Заказ создан!
+        failure: Ошибка при создании заказа! Попробуйте, пожалуйста, снова!
+        order_created: Заказ товаров

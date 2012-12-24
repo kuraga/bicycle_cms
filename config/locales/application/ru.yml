@@ -1,0 +1,7 @@
+ru:
+  application:
+    main:
+      main_article: Главная
+      sitemap: Карта сайта
+      other: Другое
+      admin_panel: Административная панель

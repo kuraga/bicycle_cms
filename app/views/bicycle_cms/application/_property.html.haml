@@ -1,0 +1,15 @@
+- if property[:value].present? #YYZ or show
+  %li{class: :property, id: property[:name]}
+    %span.label
+      = property[:label]
+    %span.value
+      - if property[:value].present?
+        - if property[:value].is_a? Enumerable
+          %ul
+            - property[:value].each do |item|
+              %li.item
+                = item
+        - else
+          = property[:value]
+      - else
+        = t('general.messages.empty')

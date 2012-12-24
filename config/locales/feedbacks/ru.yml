@@ -1,0 +1,30 @@
+ru:
+  bicycle_cms/feedbacks:
+    main:
+      feedback: Письмо
+      feedbacks: Письма посетителей
+    attributes:
+      created_at: Оставлено
+      name: Ваше имя
+      email: Ваш e-mail
+      author: Автор
+      title: Тема
+      body: Сообщение
+      replies: Ответы Администрации
+      reply: Ответ Администрации
+    actions:
+      new: Обратная связь...
+      create: Отправить письмо
+      destroy: Удалить письмо
+    actions_short:
+      new: Составить...
+      create: Отправить
+      destroy: Удалить
+    messages:
+      create:
+        success: Спасибо за письмо!
+        failure: Ошибка при отправке письма! Попробуйте, пожалуйста, снова!
+        feedback_created: Обратная связь - %{title}
+      destroy:
+        success: Письмо успешно удалено.
+        failure: Ошибка при удалении письма!

@@ -1,0 +1,17 @@
+= semantic_nested_form_for category do |form|
+  = form.inputs do
+    = form.input :title
+    = form.input :slug
+    = form.input :ancestry, collection: category.possible_ancestries_options(BicycleCms::Category.scoped.arrange(order: :title), lambda { |i| "#{'-' * i.depth} #{i.title}" })
+    = form.input :keywords
+    = form.input :description
+    = form.input :thumbnail
+    = form.input :remove_thumbnail, as: :boolean
+    = form.input :body
+    = form.semantic_fields_for :attachments do |attachment_form|
+      = render_fields_for attachment_form, parent: category
+    = form.link_to_add t('attachments.actions.add'), :attachments
+    = form.input :is_published
+  = form.actions do
+    = form.action :submit
+    = form.action :cancel

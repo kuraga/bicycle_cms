@@ -1,0 +1,7 @@
+.order_panel
+  ! Общая стоимость:
+  ! #{"%.2f"%@total_price} #{t('products.attributes.currency')}
+  %br
+  = render @products, postfix: 'order_tiny'
+
+#order_form= render_form_for @order, action: :new

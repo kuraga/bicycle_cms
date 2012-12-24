@@ -1,0 +1,10 @@
+= render_panel_for @feedback
+
+= render @feedback
+
+#feedback_reply
+  %h3= t('feedback_replies.main.feedback_reply')
+  - if @feedback.reply.new_record?
+    = render template: 'feedback_replies/new'
+  - else
+    = render @feedback.reply

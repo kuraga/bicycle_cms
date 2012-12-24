@@ -1,0 +1,25 @@
+ru:
+  bicycle_cms/mailings:
+    main:
+      mailing: Сообщение рассылки
+      mailings: Рассылки
+    attributes:
+      created_at: Разослано
+      title: Тема
+      body: Сообщение
+    actions:
+      new: Создать сообщение рассылки...
+      create: Отправить сообщение рассылки
+      destroy: Удалить сообщение рассылки
+    actions_short:
+      new: Составить...
+      create: Отправить
+      destroy: Удалить
+    messages:
+      create:
+        success: Сообщение рассылки разослано!
+        failure: Ошибка при отправке сообщения рассылки!
+        mailing_created: Рассылка - %{title}
+      destroy:
+        success: Сообщение рассылки успешно удалено.
+        failure: Ошибка при удалении сообщения рассылки!

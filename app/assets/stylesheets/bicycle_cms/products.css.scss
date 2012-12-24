@@ -1,0 +1,172 @@
+div.product {
+  margin-bottom: 100px;
+
+  div.body {
+    height: 350px;
+    position: relative;
+    margin-bottom: 100px;
+
+    div.thumbnail {
+      float: left;
+      img {
+        max-width: 200px;
+        max-height: 200px;
+        margin: 20px;
+      }
+    }
+
+  div.property, li.property {
+    margin: 0 0 2px 0;
+    height: 25px;
+    display: inline-block;
+    .label, .value {
+      text-align: center;
+      padding: 2px;
+      margin: 0;
+      display: block;
+      clear: both;
+      width: 100px;
+      min-height: 20px;
+    }
+    .label { background-color: moccasin; }
+    .value { background-color: lavender; }
+  }
+
+  }
+
+  div.slideshow {
+    clear: both;
+  }
+
+  .field { position: absolute; }
+  #field_right_1 { top: 200px; left: 350px; }
+  #field_right_2 { top: 200px; left: 500px; }
+  #field_right_3 { top: 275px; left: 425px; }
+  #field_left_1 { top: 15px; left: 350px; }
+  #field_left_2 { top: 15px; left: 500px; }
+  #field_left_3 { top: 75px; left: 350px; }
+  #field_left_4 { top: 75px; left: 500px; }
+  #field_bottom { top: 350px; left: 350px; }
+
+  ul.properties {
+  list-style: none;
+  .label, .value {
+    display: inline-block;
+  }
+  .label {
+    width: 150px;
+    padding-right: 10px;
+    text-align: right;
+    font-weight: bold;
+  }
+  .value {
+    padding-left: 10px;
+    text-align: left;
+    font-weight: normal;
+  }
+  }
+
+  ul.certs {
+    list-style: none;
+    display: inline-block;
+    li {
+      float: left;
+    }
+  }
+}
+
+div.short_product {
+  float: left;
+  width: 45%;
+  min-height: 175px;
+  padding: 15px;
+  border: {
+    top: solid 2px #900;
+    left: solid 1px #ddd;
+  }
+  background-color: #fff;
+
+  .title {
+    margin-bottom: 15px;
+  }
+
+  div.thumbnail {
+    float: left;
+    margin: 0 20px 20px 0;
+
+    img {
+      width: 120px;
+      box-shadow: -1px 1px 2px gray;
+    }
+  }
+
+  div.price {
+    display: inline-block;
+    ul {
+      padding: 4px;
+      li {
+        list-style: none;
+        text-align: right;
+        margin: 3px;
+        padding: 5px;
+        .value {
+          padding-left: 10px;
+          font: {
+            weight: bold;
+            size: 150%;
+          }
+        }
+      }
+    }
+    form {
+      display: inline;
+      margin-left: 10px;
+    }
+  }
+
+  div.description {
+  }
+
+  div.properties {
+    ul {
+      margin: 15px 0 15px 0;
+      display: -moz-box; display: -webkit-box; display: box;
+
+      li {
+        display: inline-block;
+        margin-right: 15px;
+        text-align: center;
+        > span {
+          display: inline-block;
+          padding: 2px;
+          border: solid 1px #ccc;
+        }
+      }
+    }
+
+    #color {
+      img { border: solid 1px gray; margin-right: 2px; }
+    }
+  }
+
+}
+
+h3.product_type {
+  clear: both;
+  text-align: center;
+  border-top: dashed 1px gray;
+  padding: 15px 0 15px 0;
+  margin: 50px 0 5px 0;
+  font-size: 150%;
+  font-weight: normal;
+  background-color: #eee;
+}
+
+input[type=text].quantity {
+  width: 50px;
+}
+
+.half {
+  width: 50%;
+  float: left;
+}

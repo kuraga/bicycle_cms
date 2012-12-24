@@ -1,0 +1,5 @@
+.cell.admin_actions.warning
+  = t('users.main.signed_in_as_admin')
+  %br
+  = link_to t('application.main.admin_panel'), admin_panel_path
+  = link_to t('users.actions.signout'), destroy_user_session_path

@@ -1,0 +1,9 @@
+= semantic_form_for [comment.commentable, comment], remote: true do |form|
+  = form.inputs do
+    = form.input :author_id, as: :hidden
+    = form.input :name,  as: :hidden, input_html: { value: User.find(comment.author_id).name }
+    = form.input :email, as: :hidden, input_html: { value: User.find(comment.author_id).email }
+    = form.input :body
+  = form.actions do
+    = form.action :submit
+    = form.action :cancel

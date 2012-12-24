@@ -1,0 +1,5 @@
+$('#comments').append("<%= escape_javascript render(@comment) %>");
+$('.editor#new_comment').find('textarea#comment_body').val("");
+$('.editor#new_comment')
+  .slideUp(500)
+  .html("");

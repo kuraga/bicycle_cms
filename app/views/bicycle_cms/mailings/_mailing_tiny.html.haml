@@ -1,0 +1,6 @@
+= content_tag_for :tr, mailing, :short do
+  %td
+    = I18n.localize(mailing.created_at, format: :datetime_full)
+  %td
+    = render_panel_for mailing do
+      = link_to mailing.title, mailing

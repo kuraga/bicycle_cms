@@ -1,0 +1,160 @@
+#messages {
+  margin: {
+    top: 15px;
+    bottom: 15px;
+  }
+
+  .notice, .alert, .warning {
+    display: block;
+    padding: 10px 10px 10px 40px;
+    border: 2px solid;
+    background: {
+      repeat: no-repeat;
+      position: 10px 10px;
+    }
+  }
+
+  .notice {
+    border-color: #62cf21;
+    background: {
+      image: url('/assets/notice.png');
+      color: #c5fca3;
+    }
+  }
+
+  .alert {
+    border-color: #f26666;
+    background: {
+      image: url('/assets/alert.png');
+      color: #ffdbdb;
+    }
+  }
+
+  .warning {
+    border-color: #edcc26;
+    background: {
+      image: url('/assets/warning.png');
+      color: #fff9a5;
+    }
+  }
+}
+
+.properties {
+  margin: 25px 0 25px 0;
+  line-height: 1.5;
+
+  ul {
+    li {
+      list-style: none;
+    }
+  }
+
+  .label {
+    display: inline-block;
+    margin-right: 50px;
+    font-weight: bold;
+    width: 125px;
+  }
+
+  .value {
+    line-height: 1.5;
+    display: inline-block;
+
+    ul {
+      padding: 0px;
+      margin: 0px;
+      display: inline-block;
+
+      li {
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+  }
+}
+
+.actions_with_sign, .actions_without_sign {
+
+  > .actions {
+    padding-top: 10px;
+    height: 20px;
+    line-height: 1;
+
+    * {
+      color: black;
+      font-weight: normal;
+      text-decoration: underline;
+    }
+  }
+}
+
+.actions_with_sign {
+
+  > .actions {
+    display: inline;
+    visibility: hidden;
+    font-size: 8pt;
+  }
+  &:hover {
+    > .actions {
+      display: inline;
+      visibility: visible;
+      min-height: 20px;
+    }
+  }
+}
+
+.actions_without_sign {
+
+  > .actions {
+    display: block;
+    padding: 5px;
+    border: dotted 1px gray;
+    background: #fffacd;
+    margin: 25px 0 25px 0;
+  }
+}
+
+.annotation {
+  background-color: #eee;
+  padding: 5px;
+  margin-bottom: 50px;
+}
+
+img.mime_icon_small {
+  width: 32px;
+  height: 32px;
+  margin: 1px;
+}
+
+.clear { clear: both; }
+.clear-left { clear: left; }
+.clear-right { clear: right; }
+
+#breadcrumbs {
+  clear: both;
+
+  ul {
+    display: inline-block;
+    margin: {
+      left: 0;
+      right: 0;
+    }
+    li {
+      float: left;
+      list-style: inside circle;
+      margin-right: 3px;
+      a {
+        text-decoration: underline;
+        font-weight: bold;
+        color: #559;
+      }
+
+      &:hover, &:hover {
+        a {
+          color: red;
+        }
+      }
+    }
+  }
+}

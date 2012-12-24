@@ -1,0 +1,14 @@
+- commentable ||= comment.commentable_type.constantize.find comment.commentable_id
+- author = comment.author_id.nil? ? nil : User.find(comment.author_id)
+
+- unless comment.new_record?
+  = div_for comment do
+    .title
+      = render_panel_for comment, owner: author do
+        - unless author.nil?
+          = t('comments.main.commented_by_at', author: author.fullname, created_at: I18n.localize(comment.created_at, format: :date_full), title: commentable.title, link: polymorphic_path(commentable)).html_safe
+        - else
+          = t('comments.main.commented_by_at', author: name_with_email(comment.name, comment.email), created_at: I18n.localize(comment.created_at, format: :date_full), title: commentable.title, link: polymorphic_path(commentable)).html_safe
+    .body
+      = comment.body
+    %div.editor

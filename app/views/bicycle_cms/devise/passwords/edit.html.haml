@@ -1,0 +1,9 @@
+= semantic_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |form|
+  = form.inputs do
+    = devise_error_messages!
+    = form.input :reset_password_token, as: :hidden
+    = form.input :password
+    = form.input :password_confirm
+  = form.actions do
+    = form.action :submit
+    = form.action :cancel

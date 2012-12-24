@@ -1,0 +1,10 @@
+= div_for feedback, :short do
+  .created_at
+    = I18n.localize feedback.created_at, format: :datetime_full
+  .author
+    = name_with_email feedback.name, feedback.email
+  .title
+    = render_panel_for feedback do
+      = link_to feedback.title, feedback_path(feedback)
+  .replies
+    = "#{t('feedbacks.attributes.replies')}: #{feedback.replies.count}"

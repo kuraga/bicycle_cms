@@ -1,0 +1,46 @@
+ru:
+  bicycle_cms/articles:
+    main:
+      article: Статья
+      articles: Статьи
+      published_by_at: Опубликовано %{author} в %{published_at}
+    attributes:
+      title: Заголовок
+      slug: Короткое имя
+      author: Автор
+      published_by: Опубликовано
+      category: Категория
+      description: Краткое описание
+      keywords: Ключевые слова
+      thumbnail: Изображение
+      destroy_thumbnail?: Удалить изображение?
+      body: Содержимое
+      attachments: Вложения
+      published_at: Дата публикации
+      is_published: Опубликовать?
+      is_commentable: Разрешить комментирование?
+      is_page: Отдельная страница?
+    actions:
+      new: Создать статью...
+      create: Создать статью
+      edit: Редактировать статью...
+      save: Сохранить статью
+      destroy: Удалить статью
+      more: Подробнее...
+    actions_short:
+      new: Создать...
+      create: Создать
+      edit: Редактировать...
+      save: Сохранить
+      destroy: Удалить
+      more: Подробнее...
+    messages:
+      create:
+        success: Статья успешно создана.
+        failure: Ошибка при создании статьи!
+      edit:
+        success: Статья успешно сохранена.
+        failure: Ошибка при сохранении статьи!
+      destroy:
+        success: Статья успешно удалена.
+        failure: Ошибка при удалении статьи!

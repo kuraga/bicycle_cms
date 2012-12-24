@@ -1,0 +1,8 @@
+= div_for event do
+  .properties
+    = render_properties_for event
+  - if event.thumbnail.present?
+    .thumbnail
+      = link_to image_tag(event.thumbnail.medium.url), event.thumbnail.url
+  .body
+    = eval_in_erb_sandbox event.body.presense(event.description).html_safe, binding

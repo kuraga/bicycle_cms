@@ -1,0 +1,6 @@
+.user
+  = render partial: 'profile', object: current_user, as: :user
+
+%br
+%br
+= link_to t('users.actions.edit_profile'), edit_profile_path

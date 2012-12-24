@@ -1,0 +1,5 @@
+$("#comments #comment_<%= @comment.id %> .editor").slideUp(500);
+$("#comments #comment_<%= @comment.id %> .editor").html("");
+$("#comments #comment_<%= @comment.id %> .editor").hide();
+$("#comments #comment_<%= @comment.id %>").html("<%= escape_javascript render(@comment) %>");
+

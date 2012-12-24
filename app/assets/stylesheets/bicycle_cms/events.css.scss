@@ -1,0 +1,64 @@
+div.event {
+
+  div.body {
+
+    p, ul {
+      text-align: justify;
+      margin-top: 15px;
+      padding: 15px 100px 15px 15px;
+      line-height: 1.5;
+      background: #eee;
+
+      &:hover {
+        background-color: #cce;
+        color: #444;
+      }
+    }
+
+    p {
+      &:first-letter {
+        font: {
+          size: 160%;
+          weight: bold;
+        }
+        color: #c11;
+      }
+    }
+  }
+
+  div.thumbnail {
+    img {
+      margin-right: 10px;
+      float: left;
+      border: solid 2px gray;
+      max-width: 200px;
+      max-height: 200px; 
+    }
+  }
+}
+
+div.short_event {
+  clear: both;
+  padding: 15px 0 10px 0;
+  margin-bottom: 15px;
+  border-top: solid 1px gray;
+
+  div.title {
+  }
+
+  div.thumbnail {
+    img {
+      margin-right: 10px;
+      float: left;
+      border: solid 2px gray;
+      max-width: 200px;
+      max-height: 200px; 
+    }
+  }
+
+  div.subtitle {
+  }
+
+  div.more {
+  }
+}

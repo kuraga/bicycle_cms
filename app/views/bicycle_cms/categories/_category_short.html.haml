@@ -1,0 +1,10 @@
+= div_for category, :short do
+  %h3.title
+    = render_panel_for category do
+      = link_to category.title, category
+  - if category.thumbnail.present?
+    .thumbnail
+      = image_tag category.thumbnail.medium.url
+  - if category.description.present?
+    .description
+      = eval_in_erb_sandbox category.description.html_safe, binding

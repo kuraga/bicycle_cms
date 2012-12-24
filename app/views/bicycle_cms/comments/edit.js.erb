@@ -1,0 +1,3 @@
+$("#comments #comment_<%= @comment.id %> .editor").hide();
+$("#comments #comment_<%= @comment.id %> .editor").html("<%= escape_javascript render_form_for(@comment, action: :edit) %>");
+$("#comments #comment_<%= @comment.id %> .editor").slideDown(500);

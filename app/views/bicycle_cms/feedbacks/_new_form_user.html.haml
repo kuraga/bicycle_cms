@@ -1,0 +1,9 @@
+= semantic_form_for feedback, url: '/feedback' do |form|
+  = form.inputs do
+    = form.input :name, as: :hidden, value: current_user.name
+    = form.input :email, as: :hidden, value: current_user.email
+    = form.input :title
+    = form.input :body
+  = form.actions do
+    = form.action :submit
+    = form.action :cancel

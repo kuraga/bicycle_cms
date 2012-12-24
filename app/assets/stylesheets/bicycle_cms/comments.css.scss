@@ -1,0 +1,18 @@
+div.comment {
+  margin-top: 25px;
+  border-top: dashed 1px gray;
+
+  div.title {
+    background: #efefef;
+    padding: 10px;
+  }
+
+  div.body {
+    background: #fafad2;
+    padding: 10px;
+  }
+}
+
+div.comments {
+  clear: both;
+}

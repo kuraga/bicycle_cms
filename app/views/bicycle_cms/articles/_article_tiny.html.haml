@@ -1,0 +1,8 @@
+= render_panel_for article, owner: article.author do
+  = link_to article.title, article
+  - if signed_in_as_admin?
+    = " (#{article.id})"
+    = article.slug.presense { " (#{article.slug})" }
+    %span{style: 'color: red;'}
+      = article.description.presense { " #{t('general.messages.no_description')}" }
+      = article.keywords.presense { " #{t('general.messages.no_keywords')}" }

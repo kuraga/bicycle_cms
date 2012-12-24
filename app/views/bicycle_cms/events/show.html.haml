@@ -1,0 +1,10 @@
+= render_panel_for @event
+
+= render @event
+
+- if @event.is_commentable or signed_in_as_admin?
+  .comments
+    %h3= t('comments.main.comments')
+    = render(@event.comments) || t('general.messages.empty')
+
+  = render 'bicycle_cms/comments/new'

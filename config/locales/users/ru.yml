@@ -1,0 +1,88 @@
+ru:
+  bicycle_cms/users:
+    main:
+      user: Пользователь
+      users: Пользователи
+      profile: Профиль
+      not_signed_in: Вы не вошли
+      signed_in_as: Вы вошли как %{user}
+      signed_in_as_admin: Вы вошли как Администратор! Будьте внимательны!
+    actions:
+      signup: Зарегистрироваться...
+      signin: Войти...
+      signout: Выйти
+      reset_password: Восстановить пароль...
+      edit: Редактировать данные пользователя...
+      save: Сохранить данные пользователя
+      block: Блокировать пользователя
+      unblock: Разблокировать пользователя
+      destroy: Удалить пользователя
+      profile: Ваш профиль
+      edit_profile: Редактировать Ваш профиль...
+      save_profile: Сохранить Ваш профиль
+    actions_short:
+      signup: Зарегистрироваться...
+      signin: Войти...
+      signout: Выйти
+      reset_password: Восстановить пароль
+      edit: Редактировать...
+      save: Сохранить
+      block: Блокировать
+      unblock: Разблокировать
+      destroy: Удалить
+      profile: Профиль
+      edit_profile: Редактировать...
+      save_profile: Сохранить
+    attributes:
+      login: Логин
+      name: Полное имя
+      state: Статус
+      email: E-mail
+      show_email: Показывать e-mail?
+      password: Пароль
+      gender: Пол
+      genders:
+        female: женский
+        male: мужской
+      avatar: Аватар
+      destroy_avatar?: Удалить аватар?
+      password_confirmation: Повторите пароль
+      registered_at: Дата регистрации
+    messages:
+      signup:
+        success: Регистрация завершена успешно!
+        failure: Ошибка при регистрации!
+      signin:
+        success: Вход произведен успешно.
+        failure: Ошибка входа (неверный e-mail/пароль)!
+      signout:
+        success: Выход произведен успешно.
+        failure: Ошибка выхода!
+      reset_password:
+        success: На Ваш e-mail выслан новый пароль.
+        failure: Такого пользователя не существует!
+      edit:
+        success: Данные пользователя успешно сохранены.
+        failure: Ошибка при сохранении данных пользователя!
+      edit_profile:
+        success: Ваш профиль успешно сохранен.
+        failure: Ошибка при сохранении профиля!
+      block:
+        success: Пользователь заблокирован.
+        failure: Ошибка при блокировке! Проверьте статус пользователя!
+      unblock:
+        success: Пользователь разблокирован.
+        failure: Ошибка при разблокировке! Проверьте статус пользователя!
+      destroy:
+        success: Пользователь удален.
+        failure: Ошибка при удалении!
+    groups:
+      admin: Администраторы
+      active: Пользователь
+      blocked: Заблокированные
+      guest: Гости
+    states:
+      admin: Администратор
+      active: Пользователь
+      blocked: Заблокирован
+      guest: Гость

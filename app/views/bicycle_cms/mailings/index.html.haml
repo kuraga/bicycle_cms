@@ -1,0 +1,6 @@
+%p= link_to t('mailings.actions.new'), new_mailing_path
+%table.mailings
+  %tr
+    %th= t('mailings.attributes.created_at')
+    %th= t('mailings.attributes.title')
+  = render partial: 'mailing_tiny', collection: @mailings, as: :mailing

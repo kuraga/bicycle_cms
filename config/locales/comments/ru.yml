@@ -1,0 +1,34 @@
+ru:
+  bicycle_cms/comments:
+    main:
+      comment: Комментарий
+      comments: Комментарии
+      commented_by_at: "%{author}<br /> в %{created_at} прокомментировал(а) &laquo;<a href=\"%{link}\">%{title}</a>&raquo;:"
+      comment_by: "Комментарий от %{author}"
+    attributes:
+      name: Ваше имя
+      email: Ваш e-mail
+      author: Автор
+      body: Комментарий
+      is_published: Опубликовать?
+    actions:
+      new: Новый комментарий
+      create: Создать комментарий
+      edit: Редактировать комментарий
+      save: Сохранить коииентарий
+      destroy: Удалить комментарий
+    actions_short:
+      create: Создать
+      edit: Редактировать
+      save: Сохранить
+      destroy: Удалить
+    messages:
+      create:
+        success: Комментарий успешно создан.
+        failure: Ошибка при создании комментария!
+      edit:
+        success: Комментарий успешно сохранен.
+        failure: Ошибка при сохранении комментария!
+      destroy:
+        success: Комментарий успешно удален.
+        failure: Ошибка при удалении комментария!

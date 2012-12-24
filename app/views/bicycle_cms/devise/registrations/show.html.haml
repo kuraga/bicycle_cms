@@ -1,0 +1,8 @@
+= semantic_form_for user do |form|
+  = form.inputs do
+    = form.semantic_fields_for :profile do |profile_form|
+      = profile_form.input :avatar,     as: :uneditable, input_html: { value: link_to(image_tag(user.avatar.medium.url), user.avatar.url).html_safe }
+      = profile_form.input :name,       as: :uneditable, input_html: { value: user.name }
+      = form.input         :email,      as: :uneditable, input_html: { value: mail_to(user.email).html_safe }
+      = profile_form.input :show_email, as: :uneditable, input_html: { value: t("general.messages.#{user.show_email.to_s}_value") }
+      = profile_form.input :gender,     as: :uneditable, input_html: { value: t("users.attributes.genders.#{user.gender}") }

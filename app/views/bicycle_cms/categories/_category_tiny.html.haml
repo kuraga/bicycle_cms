@@ -1,0 +1,10 @@
+= render_panel_for category do
+  = link_to category.title, category
+  - if signed_in_as_admin?
+    = " (#{category.id})"
+    - if category.slug.present?
+      = " (#{category.slug})"
+    = category.slug.presense { " (#{category.slug})" }
+    %span{style: 'color: red;'}
+      = category.description.presense { " #{t('general.messages.no_description')}" }
+      = category.keywords.presense { " #{t('general.messages.no_keywords')}" }

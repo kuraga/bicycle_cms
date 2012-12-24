@@ -1,0 +1,42 @@
+ru:
+  bicycle_cms/categories:
+    main:
+      category: Категория
+      categories: Категории
+    attributes:
+      title: Заголовок
+      slug: Короткое имя
+      parent: Родительская категория
+      description: Краткое описание
+      keywords: Ключевые слова
+      body: Полное описание
+      thumbnail: Изображение
+      destroy_thumbnail?: Удалить изображение?
+      is_published: Опубликовать?
+    actions:
+      new: Создать категорию...
+      create: Создать категорию
+      edit: Редактировать свойства категории...
+      save: Сохранить категорию
+      destroy: Удалить категорию
+      add_category: Создать подкатегорию...
+      add_article: Добавить статью...
+      tree: Дерево
+    actions_short:
+      new: Создать...
+      create: Создать
+      edit: Редактировать...
+      save: Сохранить
+      destroy: Удалить
+      add_category: Подкатегория...
+      add_article: Статья...
+    messages:
+      create:
+        success: Катагеория успешно создана.
+        failure: Ошибка при создании категории!
+      edit:
+        success: Катагеория успешно сохранена.
+        failure: Ошибка при сохранении категории!
+      destroy:
+        success: Катагеория успешно удалена.
+        failure: Ошибка при удалении категории!

@@ -1,0 +1,14 @@
+= semantic_form_for user do |form|
+  = form.inputs do
+    = form.semantic_fields_for :profile do |profile_form|
+      = form.input :email
+      = form.input :password
+      = form.input :password_confirmation
+      = profile_form.input :show_email
+      = profile_form.input :name
+      = profile_form.input :gender
+      = profile_form.input :avatar
+      = profile_form.input :remove_avatar, as: :boolean
+  = form.actions do
+    = form.action :submit
+    = form.action :cancel

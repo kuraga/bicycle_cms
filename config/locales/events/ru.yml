@@ -1,0 +1,41 @@
+ru:
+  bicycle_cms/events:
+    main:
+      event: Событие
+      events: События
+      published_at: Опубликовано в %{published_at}
+    attributes:
+      title: Заголовок
+      description: Краткое описание
+      keywords: Ключевые слова
+      body: Содержимое
+      thumbnail: Изображение
+      destroy_thumbnail?: Удалить изображение?
+      attachments: Вложения
+      published_at: Дата публикации
+      is_published: Опубликовать?
+      is_commentable: Разрешить комментирование?
+    actions:
+      new: Создать событие...
+      create: Создать событие
+      edit: Редактировать событие...
+      save: Сохранить событие
+      destroy: Удалить событие
+      more: Подробнее...
+    actions_short:
+      new: Создать...
+      create: Создать
+      edit: Редактировать...
+      save: Сохранить
+      destroy: Удалить
+      more: Подробнее...
+    messages:
+      create:
+        success: Событие успешно создано.
+        failure: Ошибка при создании события!
+      edit:
+        success: Событие успешно сохранено.
+        failure: Ошибка при сохранении события!
+      destroy:
+        success: Событие успешно удалено.
+        failure: Ошибка при удалении события!

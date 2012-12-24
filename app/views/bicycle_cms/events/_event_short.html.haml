@@ -1,0 +1,10 @@
+= div_for event, :short do
+  %h3.title
+    = render_panel_for event do
+      = link_to event.date_title, event
+  - if event.thumbnail.present?
+    .thumbnail
+      = image_tag event.thumbnail.medium.url
+  .description
+    = eval_in_erb_sandbox event.description.html_safe, binding
+    = link_to(t('events.actions_short.more'), event, class: :more) if event.body.present?

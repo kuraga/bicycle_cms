@@ -1,0 +1,16 @@
+ru:
+  bicycle_cms/attachments:
+    actions:
+      add: Добавить вложения
+      destroy: Удалить вложение
+      destroy?: Удалить вложение?
+    actions_short:
+      add: Добавить
+      destroy: Удалить
+      destroy?: Удалить?
+    attributes:
+      attachments: Вложения
+      file_for_download: Файл для закачки
+      file_for_download_replace: Файл для закачки (замены!)
+      slug: Имя вложения
+      show_in_list?: Показывать в списке?
