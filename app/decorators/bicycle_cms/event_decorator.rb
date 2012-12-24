@@ -14,7 +14,7 @@ module BicycleCms
     end
 
     def breadcrumbs
-      breadcrumbs << PageVars::Breadcrumb[title: title, path: event_path(self)]
+      [ PageVars::Breadcrumb[title: title, path: event_path(self)] ]
     end
 
 
