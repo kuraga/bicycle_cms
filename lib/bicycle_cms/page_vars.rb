@@ -33,7 +33,7 @@ module BicycleCms
     def page_vars_stylesheets; self.class.class_variable_get(:@@stylesheets) + @stylesheets; end
     def page_vars_javascripts; self.class.class_variable_get(:@@javascripts) + @javascripts; end
     def page_vars_description; (self.class.class_variable_get(:@@description) + @description).reverse.join(' '); end
-    def page_vars_keywords;    (self.class.class_variable_get(:@@keywords) + @description).reverse.collect { |keywords_set| keywords_set.join(' ') }.join(' '); end
+    def page_vars_keywords;    (self.class.class_variable_get(:@@keywords) + @keywords).reverse.collect { |keywords_set| keywords_set.join(' ') }.join(' '); end
     def page_vars_title;       (self.class.class_variable_get(:@@title) + @title).reverse.join(' | ');     end
     def page_vars_page_title;  (self.class.class_variable_get(:@@title) + @title).last;  end
 
