@@ -30,8 +30,8 @@ module BicycleCms
     # TODO Выбор возвращаемых параметров (only-except)
     def properties options = {}
       [
-        PageVars::Property[ name: :description,  label: t('bicycle_cms/categorys.attributes.description'),   value: description ],
-        PageVars::Property[ name: :keywords,     label: t('bicycle_cms/categorys.attributes.keywords'),      value: keywords ],
+        PageVars::Property[ name: :description,  label: t('bicycle_cms/categories.attributes.description'),   value: description ],
+        PageVars::Property[ name: :keywords,     label: t('bicycle_cms/categories.attributes.keywords'),      value: keywords ],
         PageVars::Property[ name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: (attachments.select { |attachment| attachment.show_in_list }).collect { |attachment| link_with_contenttype_icon attachment } ]
       ]
     end
