@@ -12,9 +12,8 @@ module BicycleCms
     end
 
     def breadcrumbs
-      User.breadcrumbs << PageVars::Breadcrumb[title: user.fullname, path: user_path(self)]
+      UserDecorator.breadcrumbs << PageVars::Breadcrumb[title: self.fullname, path: user_path(self)]
     end
-
 
     def fullname make_links = true
       (make_links ? link_to(self.name, user_path(self)) : self.name).html_safe
