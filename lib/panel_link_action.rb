@@ -23,10 +23,11 @@ class PanelLinkAction < Formtastic::Actions::LinkAction
     wrapper do
       object_model_names.each do |object_model_name|
         begin
-          template.send "#{method}_#{object_model_name.demodulize.underscore}_link", object
+          return template.send "#{method}_#{object_model_name.demodulize.underscore}_link", object
         rescue NoMethodError
         end
       end
+
       ''
     end
   end

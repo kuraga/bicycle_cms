@@ -6,16 +6,16 @@ module BicycleCms
       actions.each do |action|
         case action
         when /new|edit/
-    define_method "#{action}_#{object_class_name}_link" do |object|
-      link_to t("#{object_class_name.to_s.pluralize}.actions_short.#{action}"), polymorphic_path(object, action: action), rel: :nofollow
-    end
+          define_method "#{action}_#{object_class_name}_link" do |object|
+            link_to t("#{object_class_name.to_s.pluralize}.actions_short.#{action}"), polymorphic_path(object, action: action), rel: :nofollow
+          end
         when /destroy/
-    define_method "destroy_#{object_class_name}_link" do |object|
-      link_to t("#{object_class_name.to_s.pluralize}.actions_short.destroy"), object, method: :delete, data: { confirm: t('general.messages.are_you_sure?') }, rel: :nofollow
-    end
+          define_method "destroy_#{object_class_name}_link" do |object|
+            link_to t("#{object_class_name.to_s.pluralize}.actions_short.destroy"), object, method: :delete, data: { confirm: t('general.messages.are_you_sure?') }, rel: :nofollow
+          end
         else
-    # TODO raise
-    ""
+          # TODO raise
+          ""
         end
       end
     end
