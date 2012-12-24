@@ -8,7 +8,7 @@
   - if article.description.present?
     .description
       = eval_in_erb_sandbox article.description.html_safe
-      = link_to(t('articles.actions_short.more'), article, class: :more) if article.body.present?
+      = link_to(t('bicycle_cms/articles.actions_short.more'), article, class: :more) if article.body.present?
   - unless article.is_page?
     .subtitle
       = raw t('articles.main.published_by_at', author: article.author.fullname, published_at: l(article.published_at, format: :date_full))
