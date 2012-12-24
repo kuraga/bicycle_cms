@@ -47,7 +47,7 @@ ru:
       avatar: Аватар
       destroy_avatar?: Удалить аватар?
       password_confirmation: Повторите пароль
-      registered_at: Дата регистрации
+      created_at: Дата регистрации
     messages:
       signup:
         success: Регистрация завершена успешно!

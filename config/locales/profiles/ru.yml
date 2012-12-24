@@ -1,0 +1,17 @@
+ru:
+  bicycle_cms/profiles:
+    attributes:
+      login: Логин
+      name: Полное имя
+      state: Статус
+      email: E-mail
+      show_email: Показывать e-mail?
+      password: Пароль
+      gender: Пол
+      genders:
+        female: женский
+        male: мужской
+      avatar: Аватар
+      destroy_avatar?: Удалить аватар?
+      password_confirmation: Повторите пароль
+      created_at: Дата регистрации
