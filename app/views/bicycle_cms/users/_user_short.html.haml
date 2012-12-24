@@ -1,13 +1,13 @@
 = content_tag_for :tr, user, :short do
   %td
-    = link_to image_tag(user.avatar.small.url), @user
+    = link_to image_tag(user.avatar.small.url), user
   %td
     = render_panel_for user do
-      = link_to user.name, user_path(user)
+      = link_to user.name, user
   %td
     - if user.admin?
       = t('users.states.admin')
     - else #XYZ
       = t('users.states.active')
   %td= (signed_in_as_admin? or user.show_email?) ? mail_to(user.email) : t('general.messages.hidden')
-  %td= I18n.localize(user.registered_at, format: :datetime_full)
+  %td= I18n.localize(user.created_at, format: :datetime_full)
