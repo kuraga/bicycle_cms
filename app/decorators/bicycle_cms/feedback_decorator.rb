@@ -6,7 +6,7 @@ module BicycleCms
       include Draper::LazyHelpers # TODO Избавиться
 
       def breadcrumbs
-        [ PageVars::Breadcrumb[title: t('feedbacks.main.feedbacks'), path: new_feedback_path] ]
+        [ PageVars::Breadcrumb[title: t('bicycle_cms/feedbacks.main.feedbacks'), path: new_feedback_path] ]
       end
 
     end

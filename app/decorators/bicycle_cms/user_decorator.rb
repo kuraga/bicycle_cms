@@ -6,7 +6,7 @@ module BicycleCms
       include Draper::LazyHelpers # TODO Избавиться
 
       def breadcrumbs
-        [ PageVars::Breadcrumb[title: t('users.main.users'), path: users_path] ]
+        [ PageVars::Breadcrumb[title: t('bicycle_cms/users.main.users'), path: users_path] ]
       end
 
     end
