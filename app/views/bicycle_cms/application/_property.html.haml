@@ -8,8 +8,8 @@
           %ul
             - property[:value].each do |item|
               %li.item
-                = item
+                = item.html_safe
         - else
-          = property[:value]
+          = property[:value].html_safe
       - else
         = t('general.messages.empty')
