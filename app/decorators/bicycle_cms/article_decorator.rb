@@ -4,6 +4,7 @@ module BicycleCms
     decorates_association :category
     decorates_association :author
     decorates_association :attachments
+    decorates_association :comments
 
     class << self
 

@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'inherited_resources', '~>1.3.1'
   s.add_dependency 'responders',          '~>0.9.1'
 #  s.add_dependency 'has_scope',          '~>0.5.1'
-  s.add_dependency 'draper',              '~>0.18.0'
+  s.add_dependency 'draper',              '~>1.0.0.beta4'
   s.add_dependency 'ancestry',            '~>1.3.0'
 
   s.add_dependency 'haml',             '~>3.1.4'

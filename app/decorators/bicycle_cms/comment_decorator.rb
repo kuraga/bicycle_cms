@@ -2,7 +2,7 @@ module BicycleCms
   class CommentDecorator < ApplicationDecorator
 
     decorates_association :author
-    decorates_association :commentable
+    decorates_association :commentable, with: BicycleCms::Article #XYZ
 
     class << self
 
