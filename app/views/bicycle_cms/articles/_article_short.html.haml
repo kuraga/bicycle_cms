@@ -11,4 +11,4 @@
       = link_to(t('bicycle_cms/articles.actions_short.more'), article, class: :more) if article.body.present?
   - unless article.is_page?
     .subtitle
-      = raw t('articles.main.published_by_at', author: article.author.fullname, published_at: l(article.published_at, format: :date_full))
+      = raw t('bicycle_cms/articles.main.published_by_at', author: article.author.fullname, published_at: l(article.published_at, format: :date_full))

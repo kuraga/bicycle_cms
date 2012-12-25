@@ -6,8 +6,8 @@
       = link_to user.name, user
   %td
     - if user.admin?
-      = t('users.states.admin')
+      = t('bicycle_cms/users.states.admin')
     - else #XYZ
-      = t('users.states.active')
+      = t('bicycle_cms/users.states.active')
   %td= (signed_in_as_admin? or user.show_email?) ? mail_to(user.email) : t('general.messages.hidden')
   %td= I18n.localize(user.created_at, format: :datetime_full)

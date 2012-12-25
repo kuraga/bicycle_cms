@@ -1,8 +1,8 @@
 %table.users
   %tr
-    %th= t('users.attributes.avatar')
-    %th= t('users.attributes.name')
-    %th= t('users.attributes.state')
-    %th= t('users.attributes.email')
-    %th= t('users.attributes.created_at')
+    %th= t('bicycle_cms/users.attributes.avatar')
+    %th= t('bicycle_cms/users.attributes.name')
+    %th= t('bicycle_cms/users.attributes.state')
+    %th= t('bicycle_cms/users.attributes.email')
+    %th= t('bicycle_cms/users.attributes.created_at')
   = render collection: @users, as: :user, partial: 'user_short'

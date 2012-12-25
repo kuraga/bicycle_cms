@@ -7,4 +7,4 @@
         = form.input         :email,      value: mail_to(user.email).html_safe
       - if signed_in_as_admin?
         = profile_form.input :show_email, value: t("general.messages.#{user.show_email.to_s}_value")
-      = profile_form.input   :gender,     value: t("users.attributes.genders.#{user.gender}")
+      = profile_form.input   :gender,     value: t("bicycle_cms/users.attributes.genders.#{user.gender}")
