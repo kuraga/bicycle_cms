@@ -12,6 +12,6 @@ ru:
         female: женский
         male: мужской
       avatar: Аватар
-      destroy_avatar?: Удалить аватар?
+      remove_avatar: Удалить аватар
       password_confirmation: Повторите пароль
       created_at: Дата регистрации
