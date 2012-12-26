@@ -1,0 +1,10 @@
+= semantic_form_for user do |form|
+  = form.inputs do
+    = form.semantic_fields_for :profile do |profile_form|
+      = profile_form.input   :avatar,     as: :uneditable, value: link_to(image_tag(user.avatar.medium.url), user.avatar.url).html_safe
+      = profile_form.input   :name,       as: :uneditable, value: user.name
+      - if user.profile.show_email? or signed_in_as_admin?
+        = form.input         :email,      as: :uneditable, value: mail_to(user.email).html_safe
+      - if signed_in_as_admin?
+        = profile_form.input :show_email, as: :uneditable, value: t("general.messages.#{user.show_email.to_s}_value")
+      = profile_form.input   :gender,     as: :uneditable, value: t("bicycle_cms/users.attributes.genders.#{user.gender}")

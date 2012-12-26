@@ -35,7 +35,8 @@ module BicycleCms
     end
 
     def self.page_vars page_vars_hash = {}
-      before_render_filter do
+      options = page_vars_hash.slice(:only, :except)
+      before_render_filter options do
         [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
           send "page_vars_add_#{page_var_name}", page_vars_hash[page_var_name] if page_vars_hash.has_key? page_var_name
           # RAILS4 Условие можно заменить на try

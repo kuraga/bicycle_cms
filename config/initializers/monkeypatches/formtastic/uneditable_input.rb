@@ -8,7 +8,7 @@ module Formtastic
       def to_html
         input_wrapping do
           label_html <<
-          template.content_tag(:span, input_html_options) { options[:value] || builder.object.send(method) }
+          template.content_tag(:span, input_html_options) { block_given? ? yield : (options[:value] || builder.object.send(method)) }
         end
       end
       
