@@ -28,6 +28,10 @@ module BicycleCms
     include ErbSandbox
     include Panels
 
+    def current_user
+      UserDecorator.new super
+    end
+
     def name_with_email name, email = nil, make_links = true
       ("#{name}" + (email.not_nil? ? " (#{make_links ? mail_to(email) : email})" : '')).html_safe
     end

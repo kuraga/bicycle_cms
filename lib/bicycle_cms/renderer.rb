@@ -95,16 +95,16 @@ module BicycleCms
       end
     end
 
+    # TODO Избавиться
     def link_with_contenttype_icon attachment
       # TODO Случай отсутствия slug
       # XYZ иконка одна и та же
       link_to(image_tag('mimes/application-pdf.png', class: 'mime_icon_small')+attachment.slug.presense(attachment.file), attachment.file.url).html_safe
     end
 
-    # XYZ
-    def render_admin_block options = {}
+    def render_user_block options = {}
       locals = options.delete(:locals) || {}
-      render partial: 'admin_actions', locals: locals if signed_in_as_admin?
+      render partial: 'user_block', locals: locals
     end
 
   end
