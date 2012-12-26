@@ -16,13 +16,13 @@ module BicycleCms
     end
 
     def default_url
-      case model.gender
+      '/assets/bicycle_cms/' + case model.gender
         when :female
-    'no-avatar-female.png'
+         'no-avatar-female.png'
         when :male
-    'no-avatar-male.png'
+         'no-avatar-male.png'
         else
-    'no-avatar.png'
+         'no-avatar.png'
       end
     end
 
