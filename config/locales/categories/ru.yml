@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/categories:
     main:
-      category: Категория
-      categories: Категории
+      bicycle_cms/category: Категория
+      bicycle_cms/categories: Категории
     attributes:
       title: Заголовок
       slug: Короткое имя

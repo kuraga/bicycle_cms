@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/mailings:
     main:
-      mailing: Сообщение рассылки
-      mailings: Рассылки
+      bicycle_cms/mailing: Сообщение рассылки
+      bicycle_cms/mailings: Рассылки
     attributes:
       created_at: Разослано
       title: Тема

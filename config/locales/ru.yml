@@ -1,4 +1,9 @@
 ru:
+  formtastic:
+    actions:
+      create: Создать
+      update: Обновить
+      cancel: Отменить
   flash:
     actions:
       create:

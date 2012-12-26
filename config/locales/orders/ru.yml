@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/orders:
     main:
-      order: Заказ
-      orders: Заказы
+      bicycle_cms/order: Заказ
+      bicycle_cms/orders: Заказы
     attributes:
       created_at: Оставлено
       name: Ваше имя

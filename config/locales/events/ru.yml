@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/events:
     main:
-      event: Событие
-      events: События
+      bicycle_cms/event: Событие
+      bicycle_cms/events: События
       published_at: Опубликовано в %{published_at}
     attributes:
       title: Заголовок

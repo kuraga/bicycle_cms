@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/feedbacks:
     main:
-      feedback: Письмо
-      feedbacks: Письма посетителей
+      bicycle_cms/feedback: Письмо
+      bicycle_cms/feedbacks: Письма посетителей
     attributes:
       created_at: Оставлено
       name: Ваше имя

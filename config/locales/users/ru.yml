@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/users:
     main:
-      user: Пользователь
-      users: Пользователи
+      bicycle_cms/user: Пользователь
+      bicycle_cms/users: Пользователи
       profile: Профиль
       not_signed_in: Вы не вошли
       signed_in_as: Вы вошли как %{user}

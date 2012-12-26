@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/product:
     main:
-      article: Статья
-      articles: Статьи
+      bicycle_cms/article: Статья
+      bicycle_cms/articles: Статьи
       published_by_at: Опубликовано %{author} в %{published_at}
     attributes:
       title: Заголовок

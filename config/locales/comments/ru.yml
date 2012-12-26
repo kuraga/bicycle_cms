@@ -1,8 +1,8 @@
 ru:
   bicycle_cms/comments:
     main:
-      comment: Комментарий
-      comments: Комментарии
+      bicycle_cms/comment: Комментарий
+      bicycle_cms/comments: Комментарии
       commented_by_at: "%{author}<br /> в %{created_at} прокомментировал(а) &laquo;<a href=\"%{link}\">%{title}</a>&raquo;:"
       comment_by: "Комментарий от %{author}"
     attributes:
