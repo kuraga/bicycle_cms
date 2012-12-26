@@ -5,7 +5,7 @@
         .thumbnail
           = link_to image_tag(category.thumbnail.medium.url), category.thumbnail.url
       .body
-        = eval_in_erb_sandbox category.body.presense(category.description).html_safe, binding
+        = eval_in_erb_sandbox category.body.presense(category.body).html_safe, binding
       .properties
         = render_properties_for category
 
