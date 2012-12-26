@@ -12,6 +12,7 @@ module BicycleCms
     included do
       helper_method :page_vars_breadcrumbs, :page_vars_javascripts, :page_vars_stylesheets, :page_vars_description, :page_vars_keywords, :page_vars_title, :page_vars_page_title
 
+      # TODO Не устанавливать ли это в ApplicationController?
       class_variable_set :@@stylesheets, [ 'bicycle_cms/application' ]                      unless class_variable_defined? :@@stylesheets
       class_variable_set :@@javascripts, [ 'bicycle_cms/application' ]                      unless class_variable_defined? :@@javascripts
       class_variable_set :@@description, [ configatron.global_description || [] ]           unless class_variable_defined? :@@description
