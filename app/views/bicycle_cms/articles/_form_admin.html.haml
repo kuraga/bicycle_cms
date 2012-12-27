@@ -3,7 +3,7 @@
     = form.input :title
     = form.input :slug
     = form.input :author, collection: BicycleCms::User.all
-    = form.input :category, collection: BicycleCms::Category.all
+    = form.input :category, collection: BicycleCms::CategoryDecorator.categories_options
     = form.input :description
     = form.input :keywords
     = form.input :thumbnail

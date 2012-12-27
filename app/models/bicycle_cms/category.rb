@@ -22,9 +22,6 @@ module BicycleCms
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    # TODO Решить
-    root_id = 1
-
     attr_accessible :is_published, :ancestry, :title, :slug, :description, :keywords, :body, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
 
     validates :title, presence: true
@@ -32,8 +29,13 @@ module BicycleCms
 
     include DefaultScopes
     define_default_scopes is_active: :is_published
-    scope :root, -> { where(id: root_id) }
-    scope :in_root, -> { where(parent_id: root_id) }
+
+    # TODO Избавиться
+    class << self
+      def root
+        find 1
+      end
+    end
 
   end
 end

@@ -14,8 +14,10 @@ module BicycleCms
         []
       end
 
-      def root_category
-        find(1)
+      def categories_options items = Category.scoped.arrange, block = lambda { |i| "#{'-' * i.depth} #{i.title}" }
+        items.inject [] do |res, (item, sub_items)|
+          res + [ [block.call(item), item.id], *categories_options(sub_items, block) ]
+        end
       end
 
     end
@@ -36,9 +38,9 @@ module BicycleCms
       ]
     end
 
-    def possible_ancestries_options(items, ancestries = [], block)
+    def possible_ancestries_options items = Category.scoped.arrange, block = lambda { |i| "#{'-' * i.depth} #{i.title}" }, ancestries = []
       items.inject [] do |res, (item, sub_items)|
-        item == self ? [] : [ [block.call(item), ancestries.blank? ? "#{item.id}" : "#{ancestries.join('/')}/#{item.id}"], *possible_ancestries_options(sub_items, ancestries << item.id, block) ]
+        res + (item == self ? [] : [ [block.call(item), ancestries.blank? ? "#{item.id}" : "#{ancestries.join('/')}/#{item.id}"], *possible_ancestries_options(sub_items, block, ancestries.dup << item.id) ])
       end
     end
 
