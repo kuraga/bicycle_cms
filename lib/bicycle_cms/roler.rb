@@ -29,7 +29,7 @@ module BicycleCms
     end
 
     def current_user_role_for object, options = {}
-      owner = options.delete(:owner) #XYZ || (not object.try(:author_id).nil?) ? User.find(object.author_id) : nil
+      owner = options.delete(:owner) || (object.respond_to?(:owner) ? object.owner : nil)
       roles = options.delete(:roles) || [:admin, :creator, :owner, :guest]
 
       if roles.include?(:universal)

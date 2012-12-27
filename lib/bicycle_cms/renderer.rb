@@ -9,7 +9,7 @@ module BicycleCms
     def ext_render object, options = {}, &block
       object_model_names = Array.wrap(options.delete(:class_names) || object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name.to_s })
       as = options.delete(:as) || object.class.model_name.to_s.demodulize.underscore
-      role = options.delete(:role) || current_user_role_for(object) 
+      role = options.delete(:role) || current_user_role_for(object, owner: options.delete(:owner), roles: options.delete(:roles))
       action = options.delete(:action) || ''
       view = options.delete(:view) || ''
       locals = options.delete(:locals) || {}
