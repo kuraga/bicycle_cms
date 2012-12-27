@@ -6,5 +6,7 @@ module BicycleCms
     actions :all
     page_vars
 
+    before_filter :authenticate_admin!, except: :show
+
   end
 end

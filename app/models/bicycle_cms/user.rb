@@ -64,7 +64,7 @@ module BicycleCms
     end
 
     def admin?
-      true #XYZ is_active? and is_admin?
+      is_admin? #XYZ is_active? and is_admin?
     end
 
   end

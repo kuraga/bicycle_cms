@@ -1,5 +1,4 @@
 require 'bicycle_cms/page_vars'
-require 'bicycle_cms/authenticater'
 require 'bicycle_cms/roler'
 require 'bicycle_cms/renderer'
 require 'bicycle_cms/panels'
@@ -21,8 +20,6 @@ module BicycleCms
     end
 
     include ::ApplicationHelper
-#XYZ    include Rails.application.routes.url_helpers
-    include Authenticater
     include Roler
     include Renderer
     include ErbSandbox

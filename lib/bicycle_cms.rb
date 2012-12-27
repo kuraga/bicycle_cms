@@ -1,7 +1,6 @@
 require 'bicycle_cms/version'
 require 'bicycle_cms/engine'
 
-require 'bicycle_cms/authenticater.rb'
 require 'bicycle_cms/erb_sandbox.rb'
 require 'bicycle_cms/page_vars.rb'
 require 'bicycle_cms/roler.rb'

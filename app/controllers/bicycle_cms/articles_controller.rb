@@ -5,7 +5,7 @@ module BicycleCms
     actions :all, except: :index
     page_vars
 
-    before_filter :authenticate_user!, except: :show
+    before_filter :authenticate_admin!, except: :show
 
     # TODO Избавиться
     before_render_filter({ only: :show          }) { @commentable = @article; @comment = @commentable.comments.build }

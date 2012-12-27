@@ -1,5 +1,4 @@
 require 'bicycle_cms/redirector'
-require 'bicycle_cms/authenticater'
 require 'bicycle_cms/roler'
 
 module BicycleCms
@@ -8,7 +7,6 @@ module BicycleCms
     inherit_resources
 
     include Redirector
-    include Authenticater
     include RenderCallbacks
     include Roler
 
