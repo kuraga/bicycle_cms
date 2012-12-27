@@ -2,8 +2,8 @@
   = form.inputs do
     = form.input :title
     = form.input :slug
-    = form.input :author, collection: BicycleCms::User.all
-    = form.input :category, collection: BicycleCms::CategoryDecorator.categories_options
+    = form.input :author, collection: BicycleCms::User.all, include_blank: false
+    = form.input :category, collection: BicycleCms::CategoryDecorator.categories_options, include_blank: false
     = form.input :description
     = form.input :keywords
     = form.input :thumbnail

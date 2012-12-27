@@ -2,7 +2,7 @@
   = form.inputs do
     = form.input :title
     = form.input :slug
-    = form.input :ancestry, collection: category.possible_ancestries_options
+    = form.input :ancestry, collection: category.possible_ancestries_options, include_blank: false
     = form.input :keywords
     = form.input :description
     = form.input :thumbnail
