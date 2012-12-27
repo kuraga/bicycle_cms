@@ -10,7 +10,7 @@ module BicycleCms
 
       # TODO Рассчитано на наличие commentable
       def breadcrumbs commentable
-        [ PageVars::Breadcrumb[title: t('bicycle_cms/comments.main.comments'), path: polymorphic_path([commentable, Comment])] ]
+        [ PageVars::Breadcrumb[title: t('bicycle_cms/comments.main.bicycle_cms/comments'), path: polymorphic_path([commentable, Comment])] ]
       end
 
     end
