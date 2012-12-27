@@ -16,22 +16,3 @@ table.feedbacks {
     padding: 5px;
   }
 }
-
-.editor#new_comment {
-  margin: 50px 0 50px 0;
-}
-
-div.feedback_reply {
-  margin-top: 25px;
-  border-top: dashed 1px gray;
-
-  div.title {
-    background: #efefef;
-    padding: 10px;
-  }
-
-  div.body {
-    background: #fafad2;
-    padding: 10px;
-  }
-}

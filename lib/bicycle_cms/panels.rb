@@ -59,7 +59,6 @@ module BicycleCms
     autoload :CategoryPanel
     autoload :UserPanel
     autoload :FeedbackPanel
-    autoload :FeedbackReplyPanel
     autoload :MailingPanel
     autoload :ProductPanel
 

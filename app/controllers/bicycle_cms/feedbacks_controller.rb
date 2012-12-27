@@ -7,9 +7,6 @@ module BicycleCms
 
     before_filter :authenticate_admin!, except: [:new, :create]
 
-    # TODO Избавиться
-    before_render_filter({ only: :show }) { @feedback_reply = @feedback.build_reply }
-
     def create
       create! do |success,failure|
         success.any do
