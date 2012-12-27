@@ -7,14 +7,14 @@ ru:
   flash:
     actions:
       create:
-        notice: "%{resource_name} was successfully created."
-        alert: "%{resource_name} could not be created."
+        notice: "%{resource_name} успешно создан(а,о)"
+        alert: "%{resource_name} не может быть создан(а,о)"
       update:
-        notice: "%{resource_name} was successfully updated."
-        alert: "%{resource_name} could not be updated."
+        notice: "%{resource_name} успешно обновлен(а,о)"
+        alert: "%{resource_name} не может быть обновлен(а,о)"
       destroy:
-        notice: "%{resource_name} was successfully destroyed."
-        alert: "%{resource_name} could not be destroyed."
+        notice: "%{resource_name} успешно удален(а,о)"
+        alert: "%{resource_name} не может быть удален(а,о)"
   time:
     formats:
       date_full: "%A, %d %B %Y"

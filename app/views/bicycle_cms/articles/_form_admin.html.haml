@@ -12,7 +12,7 @@
     = form.input :published_at
     = form.semantic_fields_for :attachments do |attachment_form|
       = render_fields_for attachment_form, parent: article
-    = form.link_to_add t('attachments.actions.add'), :attachments
+    = form.link_to_add t('bicycle_cms/attachments.actions.add'), :attachments
     = form.input :is_commentable
     = form.input :is_published
     = form.input :is_page

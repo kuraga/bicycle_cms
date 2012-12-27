@@ -10,11 +10,11 @@ ru:
       keywords: Ключевые слова
       body: Содержимое
       thumbnail: Изображение
-      destroy_thumbnail?: Удалить изображение?
-      attachments: Вложения
+      remove_thumbnail: Удалить изображение
+      attachments: Вложения (файлы)
       published_at: Дата публикации
-      is_published: Опубликовать?
-      is_commentable: Разрешить комментирование?
+      is_published: Опубликовать
+      is_commentable: Разрешить комментирование
     actions:
       new: Создать событие...
       create: Создать событие

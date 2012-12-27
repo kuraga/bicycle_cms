@@ -10,7 +10,7 @@
     = form.input :body
     = form.semantic_fields_for :attachments do |attachment_form|
       = render_fields_for attachment_form, parent: category
-    = form.link_to_add t('attachments.actions.add'), :attachments
+    = form.link_to_add t('bicycle_cms/attachments.actions.add'), :attachments
     = form.input :is_published
   = form.actions do
     = form.action :submit

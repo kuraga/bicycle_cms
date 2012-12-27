@@ -6,13 +6,13 @@ ru:
     attributes:
       title: Заголовок
       slug: Короткое имя
-      parent: Родительская категория
+      ancestry: Родительская категория
       description: Краткое описание
       keywords: Ключевые слова
       body: Полное описание
       thumbnail: Изображение
-      destroy_thumbnail?: Удалить изображение?
-      is_published: Опубликовать?
+      remove_thumbnail: Удалить изображение
+      is_published: Опубликовать
     actions:
       new: Создать категорию...
       create: Создать категорию
