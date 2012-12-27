@@ -1,7 +1,6 @@
 = semantic_form_for feedback, url: '/feedback' do |form|
   = form.inputs do
-    - form.with_options as: :uneditable do |form_uneditale|
-      = form_uneditale.input :created_at, value: I18n.localize(feedback.created_at, format: :datetime_full)
-      = form_uneditale.input :author,     value: name_with_email(feedback.name, feedback.email)
-      = form_uneditale.input :title
-      = form_uneditale.input :body
+    = form.input :created_at, as: :uneditable, value: I18n.localize(feedback.created_at, format: :datetime_full)
+    = form.input :author,     as: :uneditable, value: name_with_email(feedback.name, feedback.email)
+    = form.input :title,      as: :uneditable
+    = form.input :body,       as: :uneditable
