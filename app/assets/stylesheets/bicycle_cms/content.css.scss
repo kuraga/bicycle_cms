@@ -10,6 +10,7 @@
     border: 2px solid;
     background: {
       repeat: no-repeat;
+      size: 20px 20px;
       position: 10px 10px;
     }
   }
@@ -120,15 +121,15 @@
   margin-bottom: 50px;
 }
 
-img.mime_icon_small {
-  width: 32px;
-  height: 32px;
-  margin: 1px;
-}
-
 .clear { clear: both; }
 .clear-left { clear: left; }
 .clear-right { clear: right; }
+
+img.tiny_icon, img.small_icon, img.medium_icon, img.big_icon, img.huge_icon { vertical-align: middle; }
+img.tiny_icon   { max-width: 16px; max-height: 16px;   }
+img.small_icon  { max-width: 32px; max-height: 32px;   }
+img.medium_icon { max-width: 64px; max-height: 64px;   }
+img.big_icon    { max-width: 128px; max-height: 128px; }
 
 #breadcrumbs {
   clear: both;

@@ -1,0 +1,213 @@
+.formtastic,
+.formtastic * {
+  margin: 0;
+  padding: 0;
+}
+
+.formtastic fieldset {
+  border: 0;
+}
+
+.formtastic ol,
+.formtastic ul {
+  list-style: none;
+}
+
+.formtastic abbr,
+.formtastic acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+
+.formtastic .stringish input,
+.formtastic .text textarea,
+.formtastic .boolean label,
+.formtastic .choices-group {
+  padding: 2px;
+  min-height: 3ex;
+  width: 70%;
+}
+
+.formtastic button, 
+.formtastic .input .label,
+.formtastic .stringish input,
+.formtastic .text textarea {
+  border: 2px solid #ccc;
+}
+
+
+/* SEMANTIC ERRORS */
+.formtastic .errors {
+  color: #cc0000;
+  margin: 1em;
+  list-style: square;
+}
+
+.formtastic .errors li {
+  border: none;
+  display: list-item;
+}
+
+/* BUTTONS & ACTIONS */
+.formtastic .buttons, 
+.formtastic .actions {
+  overflow: hidden; /* clear containing floats */
+}
+
+.formtastic .button, 
+.formtastic .action,
+.formtastic .link_action a {
+  float: left;
+  padding-right: 2em;
+}
+
+.formtastic .button_action button,
+.formtastic .link_action a {
+  display: block;
+}
+
+/* INPUTS */
+.formtastic .inputs {
+}
+
+.formtastic .input {
+  padding: .5em;
+  clear: both;
+}
+
+/* LEFT ALIGNED LABELS */
+.formtastic .input .label {
+  display: block;
+  width: 20%;
+  float: left;
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  margin-right: 1em;
+  line-height: 1.5;
+  min-height: 3ex;
+  background-color: #f0f0f0;
+}
+
+.formtastic .fragments .label,
+.formtastic .choices .label {
+}
+
+.formtastic .fragments .label label,
+.formtastic .choices .label label {
+}
+
+/* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets) */
+.formtastic .choices {
+  position: relative;
+}
+
+.formtastic .choices-group {
+  float: left;
+}
+
+.formtastic .choice {
+  padding: 0;
+  border: 0;
+}
+
+/* INLINE HINTS */
+.formtastic .input .inline-hints {
+  color: #666;
+  margin-top: .5em;
+}
+
+/* INLINE ERRORS */
+.formtastic .inline-errors {
+  color: #cc0000;
+  margin-top: .5em;
+}
+
+.formtastic .errors {
+  color: #cc0000;
+  margin-top: .5em;
+  list-style: square;
+}
+
+.formtastic .errors li {
+  padding: 0;
+  border: none;
+  display: list-item;
+}
+
+/* STRING, NUMERIC, PASSWORD, EMAIL, URL, PHONE, SEARCH (ETC) OVERRIDES */
+.formtastic .stringish input {
+}
+
+.formtastic .stringish input[size] {
+}
+
+/* TEXTAREA OVERRIDES */
+.formtastic .text textarea {
+}
+
+.formtastic .text textarea[cols] {
+}
+
+/* HIDDEN OVERRIDES */
+.formtastic .hidden {
+  display: none;
+}
+
+/* BOOLEAN LABELS */
+.formtastic .boolean label {
+  display: block;
+}
+
+/* CHOICE GROUPS */
+.formtastic .choices-group {
+  margin-bottom: -0.5em;
+}
+
+.formtastic .choice {
+  margin: .5em;
+}
+
+.formtastic .choice label {
+  float: none;
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+/* ADJUSTMENTS FOR INPUTS INSIDE LABELS (boolean input, radio input, check_boxes input) */
+.formtastic .choice label input,
+.formtastic .boolean label input {
+  margin: .5em;
+}
+
+/* FRAGMENTED INPUTS (DATE/TIME/DATETIME) */
+.formtastic .fragments {
+}
+
+.formtastic .fragments-group {
+}
+
+.formtastic .fragment {
+  float: left;
+  margin-right: .5em;
+}
+
+.formtastic .fragment label {
+  display: none;
+}
+
+.formtastic .fragment label input {
+  display: inline;
+}
+
+.formtastic .choices-group,
+.formtastic .boolean label,
+.formtastic .fragments-group,
+.formtastic .errors,
+.formtastic .input .inline-hints,
+.formtastic .inline-errors,
+.formtastic .errors {
+  max-width: 70%;
+  margin-left: 25%;
+}

@@ -16,7 +16,7 @@ module BicycleCms
     end
 
     def default_url
-      '/assets/bicycle_cms/' + case model.gender
+      '/assets/bicycle_cms/users/' + case model.gender
         when :female
          'no-avatar-female.png'
         when :male
