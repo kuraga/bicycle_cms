@@ -56,14 +56,7 @@ module BicycleCms
       def page_vars_add_keywords    keywords;    class_variable_get(:@@keywords   ) << Array.wrap(keywords) if keywords.present?;    end
       def page_vars_add_title       title;       class_variable_get(:@@title      ) << title                if title.present?;       end
 
-      def page_vars_dependence_action
-        page_vars_add_stylesheet self.to_s
-        page_vars_add_javascript self.to_s
-      end
-
-      def page_vars_depends_on dependence
-        page_vars_dependence_action
-      end
+      # TODO page_vars_depends_on
 
     end
 

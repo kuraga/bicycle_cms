@@ -4,7 +4,6 @@ module BicycleCms
     respond_to :html
     actions :all
     page_vars
-    page_vars_depends_on :comments
 
     before_filter :authenticate_admin!, except: [:index, :show]
 
