@@ -19,9 +19,6 @@ module BicycleCms
     has_many :attachments, as: :attachable, dependent: :destroy
     accepts_nested_attributes_for :attachments, reject_if: proc { |attrs| attrs[:file].nil? }, allow_destroy: true
 
-    extend FriendlyId
-    friendly_id :title, use: :slugged
-
     attr_accessible :is_published, :ancestry, :title, :slug, :description, :keywords, :body, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
 
     validates :title, presence: true
@@ -29,6 +26,10 @@ module BicycleCms
 
     include DefaultScopes
     define_default_scopes is_active: :is_published
+
+    extend FriendlyId
+    friendly_id :title, use: :slugged
+    should_not_generate_new_friendly_id_unless_new_record_and_blank_slug!
 
     # TODO Избавиться
     class << self

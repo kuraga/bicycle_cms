@@ -14,5 +14,9 @@ module BicycleCms
 
     attr_accessible :file, :slug, :show_in_list, as: [:creator, :owner, :admin]
 
+    extend FriendlyId
+    friendly_id :file, use: :slugged
+    should_not_generate_new_friendly_id_unless_new_record_and_blank_slug!
+
   end
 end

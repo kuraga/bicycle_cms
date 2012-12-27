@@ -21,6 +21,7 @@ module BicycleCms
 
     attr_accessible :is_published, :published_at, :title, :description, :keywords, :body, :is_commentable, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
 
+    #XYZ
     extend FriendlyId
     friendly_id :slug
     def slug; published_at.strftime('%Y-%m-%d'); end
