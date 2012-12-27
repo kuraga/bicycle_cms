@@ -9,7 +9,7 @@ module BicycleCms
     before_filter :authenticate_user!, excaept: :show
 
     # TODO Избавиться
-    before_render_filter({ only: :edit }) { resource.build_profile unless resource.profile }
+    before_render_filter(only: :edit) { resource.build_profile unless resource.profile }
 
   end
 end

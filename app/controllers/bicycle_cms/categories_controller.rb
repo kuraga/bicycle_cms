@@ -8,7 +8,7 @@ module BicycleCms
     before_filter :authenticate_admin!, except: [:show, :tree]
 
     # TODO Избавиться
-    before_render_filter({ only: [:new, :edit] }) { 5.times { resource.attachments.build } }
+    before_render_filter(only: [:new, :edit]) { 5.times { resource.attachments.build } }
 
   end
 end
