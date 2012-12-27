@@ -9,4 +9,5 @@
 //= require bicycle_cms/feedbacks
 //= require bicycle_cms/mailings
 //= require bicycle_cms/products
+//= require bicycle_cms/orders
 //= require bicycle_cms/content
