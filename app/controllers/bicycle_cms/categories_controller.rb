@@ -3,6 +3,7 @@ module BicycleCms
 
     respond_to :html
     actions :all, except: :index
+    custom_actions resource: :tree
     page_vars
 
     before_filter :authenticate_admin!, except: [:show, :tree]
