@@ -1,3 +1,5 @@
+require 'active_enum'
+
 module ActiveEnum
   class Base
 

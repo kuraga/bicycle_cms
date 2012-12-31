@@ -1,3 +1,5 @@
+require 'carrierwave'
+
 module BicycleCms
   class Attachment < ActiveRecord::Base
 

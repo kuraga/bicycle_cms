@@ -1,3 +1,5 @@
+require 'draper'
+
 class Array
 
   def decorate

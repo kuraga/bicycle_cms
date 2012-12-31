@@ -1,3 +1,5 @@
+require 'formtastic'
+
 module Formtastic
   module LocalizedString
 

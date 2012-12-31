@@ -1,3 +1,4 @@
+require 'formtastic'
 require 'bicycle_cms/panels'
 
 # TODO Класс вне BicycleCms

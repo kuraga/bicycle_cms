@@ -1,3 +1,5 @@
+require 'ancestry'
+
 module BicycleCms
   class Category < ActiveRecord::Base
 

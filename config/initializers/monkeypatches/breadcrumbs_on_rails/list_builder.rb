@@ -1,3 +1,5 @@
+require 'breadcrumbs_on_rails'
+
 module BreadcrumbsOnRails
   module Breadcrumbs
 
