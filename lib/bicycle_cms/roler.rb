@@ -37,12 +37,12 @@ module BicycleCms
       elsif roles.include?(:admin) and signed_in_as_admin?
         :admin
       elsif signed_in?
-        if roles.include?(:creator) and object.try :new_record?
-    :creator
+        if roles.include?(:creator) and (object.nil? or object.try :new_record?)
+          :creator
         elsif roles.include?(:owner) and not owner.nil? and owner == current_user
-    :owner
+          :owner
         elsif roles.include?(:user)
-    :user
+          :user
         end
       elsif roles.include?(:guest)
         :guest

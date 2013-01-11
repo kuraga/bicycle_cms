@@ -11,12 +11,13 @@ Gem::Specification.new do |s|
   s.summary     = 'TODO: Summary of BicycleCms.'
   s.description = 'TODO: Description of BicycleCms.'
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  s.files = Dir["{app,config,lib}/**/*"] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = []
 
   s.add_dependency 'rails',                '~> 3.2.9'
 
   s.add_dependency 'sass-rails',           '~>3.2.3'
+  s.add_dependency 'jquery-rails',         '~>2.0.2'
   s.add_dependency 'coffee-rails',         '~>3.2.1'
   s.add_dependency 'execjs'
   s.add_dependency 'therubyracer',         '~>0.10.0'
@@ -27,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'squeel',               '~>1.0.13'
   s.add_dependency 'active_enum',          '~>0.9.11'
   s.add_dependency 'randexp',              '~>0.1.7'
+  s.add_dependency 'multiple_table_inheritance', '~> 0.2.1'
   s.add_dependency 'rails-i18n',           '~>0.5.1'
 
   s.add_dependency 'inherited_resources',  '~>1.3.1'
