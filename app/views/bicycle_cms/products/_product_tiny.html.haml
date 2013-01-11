@@ -1,8 +1,0 @@
-= render_panel_for product, owner: product.author do
-  = link_to product.title, product
-  - if signed_in_as_admin?
-    = " (#{product.id})"
-    = product.slug.presense { " (#{product.slug})" }
-    %span{style: 'color: red;'}
-      = product.description.presense { " #{t('general.messages.no_description')}" }
-      = product.keywords.presense { " #{t('general.messages.no_keywords')}" }

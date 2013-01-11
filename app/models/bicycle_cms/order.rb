@@ -11,64 +11,39 @@ module BicycleCms
     col :data,       as: :text
     store :data, accessors: [ :items ]
 
-    attr_accessible :created_at, :name, :email, :comment, :items, as: [:creator, :admin]
-    default_values created_at: -> { DateTime.now }, comment: '', items: {}
+    attr_accessible :created_at, :name, :email, :comment, :items, as: [:guest, :creator, :admin]
+    default_values created_at: -> { DateTime.now }, comment: '', items: HashWithIndifferentAccess.new
+
+    belongs_to :author, class_name: 'User'
 
     validates :name, presence: true,
-               length: { within: 5..50 }
+              length: { within: 5..50 }
     validates :email, presence: true,
-                format: { with: /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
+              format: { with: /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
 
     def deliver
       OrderMailer.order_message(self).deliver
     end
 
-
-
-    def [] product_id
-      items[product_id.to_i]
+    after_initialize do
+      @current_order_id = 1
     end
 
-    def add product_or_id, quantity
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items[product_id] = OrderItem[product_id: product_id, quantity: 0] unless items.has_key? product_id
-      items[product_id][:quantity] = items[product_id][:quantity].to_i + quantity.to_i
-      items
+
+    delegate *(HashWithIndifferentAccess.instance_methods-Object.instance_methods), to: :items
+
+    def << order_item
+      items[@current_order_id] = order_item
+      @current_order_id += 1
+      self
     end
 
-    def remove product_or_id
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items.delete product_id
-      items
+    def items_of product_id
+      items.select { |order_item_id,order_item| order_item[:product_id].to_i == product_id }
     end
 
-    def product_params product_or_id
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items.has_key?(product_id) ? items[product_id][:quantity] : 0
-    end
-
-    def set_product_param product_or_id, param, value
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items[product_id].send "#{param}=", value
-      items
-    end
-
-    def set_product_params product_or_id, params
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items[product_id].merge! params.symbolize_keys
-      items
-    end
-
-    def product_quantity product_or_id
-      product_id = product_or_id.is_a?(Product) ? product_or_id : Product.find(product_or_id).id
-      items.has_key?(product_id) ? items[product_id][:quantity] : 0
-    end
-
-    def clean
-      items.each do |product_id, product_order_item|
-        remove product_id
-      end
-      items
+    def delete_product_inclusions product_id
+      items.delete_if { |order_item_id, order_item| order_item[:product_id]==product_id }
     end
 
   end

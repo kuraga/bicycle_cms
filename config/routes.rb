@@ -39,12 +39,11 @@ BicycleCms::Engine.routes.draw do
     get '/feedback' => 'feedbacks#new'
     post '/feedback' => 'feedbacks#create'
 
-    resource :order, only: [:index, :new, :create] do
-      get '' => 'orders#show', as: :show
-      post 'add' => 'orders#add', as: :add_to
-      put 'update/:id' => 'orders#update', as: :update
-      delete 'delete/:id' => 'orders#destroy', as: :delete_from
-      get 'clean' => 'orders#clean', as: :clean
+    resource :order, only: [:show, :new, :create, :destroy] do
+      post   'add'        => 'orders#add',    as: :add_to
+      put    'update/:id' => 'orders#update', as: :update
+      delete 'delete/:id' => 'orders#delete', as: :delete_from
+      delete 'delete_product_inclusions/:id' => 'orders#delete_product_inclusions', as: :delete_product_inclusions_from
     end
 
 #    get '/*id' => "#{configatron.route_root_requests_to}#show", as: configatron.route_root_requests_to.singularize

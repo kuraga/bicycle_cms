@@ -33,5 +33,9 @@ module BicycleCms
       ("#{name}" + (email.not_nil? ? " (#{make_links ? mail_to(email) : email})" : '')).html_safe
     end
 
+    def current_order
+      session[:order] ||= Order.new
+    end
+
   end
 end

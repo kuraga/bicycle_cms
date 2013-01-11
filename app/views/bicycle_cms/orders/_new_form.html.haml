@@ -1,8 +1,0 @@
-= semantic_form_for @order, url: order_path, remote: true do |form|
-  = form.inputs do
-    = form.input :name
-    = form.input :email
-    = form.input :comment
-  = form.actions do
-    = form.action :submit, label: 'Выписать счет!'
-    = form.action :cancel, label: 'Отмена'

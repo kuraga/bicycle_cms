@@ -5,19 +5,42 @@ ru:
       bicycle_cms/orders: Заказы
     attributes:
       created_at: Оставлено
+      author: Автор заказа
       name: Ваше имя
       email: Ваш e-mail
       comment: Комментарий
-      total_price: Общая стоимость
-      quantity: Количество
     actions:
       new: Оформить заказ...
       create: Заказать!
+      add: Добавить товар (позицию)
+      update: Изменить позицию
+      delete: Удалить позицию
+      delete_product_inclusions: Удалить позиции с этим товаром
+      destroy: Очистить заказ
     actions_short:
       new: Заказ...
       create: Заказать!
+      add: Добавить
+      update: Изменить
+      delete: Удалить
+      delete_product_inclusions: Удалить позиции с этим товаром
+      destroy: Очистить
     messages:
       create:
         success: Заказ создан!
         failure: Ошибка при создании заказа! Попробуйте, пожалуйста, снова!
-        order_created: Заказ товаров
+      add:
+        success: Товар добавлен!
+        failure: Ошибка при добавлении товара! Попробуйте, пожалуйста, снова!
+      update:
+        success: Позиция в заказе изменена!
+        failure: Ошибка при изменении позиции заказа! Попробуйте, пожалуйста, снова!
+      delete:
+        success: Позиция в заказе удалена!
+        failure: Ошибка при удалении позиции заказа! Попробуйте, пожалуйста, снова!
+      delete_product_inclusions:
+        success: Позиции в заказе удалена!
+        failure: Ошибка при удалении позиций заказа! Попробуйте, пожалуйста, снова!
+      destroy:
+        success: Заказ очищен!
+        failure: Ошибка при очистке заказа! Попробуйте, пожалуйста, снова!

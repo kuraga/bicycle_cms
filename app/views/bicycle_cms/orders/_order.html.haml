@@ -1,0 +1,2 @@
+- order.each_value do |order_item|
+  = render(BicycleCms::Product.find(order_item[:product_id]).decorate, postfix: 'order') rescue render(BicycleCms::Product.find(order_item[:product_id]).decorate, postfix: 'short')

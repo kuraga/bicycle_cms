@@ -70,11 +70,21 @@ module BicycleCms
         end
       end
 
-      def update_resource(object, attributes)
-        attributes[1] ||= {}
-        attributes[1][:as] ||= current_user_role_for(action_name =~ /new|create/ ? build_resource : resource) if params[:id] # TODO Как определить, есть ли resource?
+      # XYZ
 
-        super
+      def role_given?
+        true
+      end
+
+      def as_role
+         { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
+      end
+
+      #XYZ
+
+      def set_flash_message?
+p 1234
+        true
       end
 
   end

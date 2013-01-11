@@ -1,8 +1,9 @@
-= semantic_form_for [comment.commentable, comment], remote: true do |form|
+= semantic_form_for order, url: order_path do |form|
   = form.inputs do
     = form.input :author_id, as: :hidden, input_html: { value: current_user.id }
     = form.input :name,      as: :hidden, input_html: { value: current_user.name }
     = form.input :email,     as: :hidden, input_html: { value: current_user.email }
-    = form.input :body
+    = form.input :comment
   = form.actions do
     = form.action :submit
+    = form.action :cancel
