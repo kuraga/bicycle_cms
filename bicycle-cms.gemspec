@@ -49,4 +49,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise',               '~>2.1.2'
   s.add_dependency 'carrierwave',          '~>0.6.0'
   s.add_dependency 'mini_magick',          '~>3.4.0'
+
+  s.add_dependency 'aloha-rails' #XYZ версия
+  s.add_dependency 'captchator',           '~>0.0.4'
 end

@@ -24,6 +24,8 @@ require 'devise'
 require 'carrierwave'
 require 'mini_magick'
 
+require 'captchator'
+
 require 'bicycle_cms/version'
 require 'bicycle_cms/engine'
 

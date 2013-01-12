@@ -31,7 +31,7 @@ module BicycleCms
       ).uniq
 
       capture do
-        yield object if block_given?
+        concat ( yield object ) if block_given?
         concat ( 
           if object and as
             render partial: partials, object: object, as: as, locals: locals
@@ -43,8 +43,8 @@ module BicycleCms
     end
 
     def render_form_for object, options = {}, &block
-      yield object if block_given?
       capture do
+        concat ( yield object ) if block_given?
         concat ( ext_render object, options.merge(view: 'form'), &block )
       end
     end
@@ -54,8 +54,8 @@ module BicycleCms
       role = options.delete(:role) || current_user_role_for(parent)
 
       capture do
-        yield object if block_given?
-        ext_render form, options.merge(class_names: object_model_name.underscore, view: 'fields', as: "#{object_model_name.demodulize.underscore}_form")
+        concat ( yield object ) if block_given?
+        concat ( ext_render form, options.merge(class_names: object_model_name.underscore, view: 'fields', as: "#{object_model_name.demodulize.underscore}_form") )
       end
     end
 

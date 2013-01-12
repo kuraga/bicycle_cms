@@ -4,5 +4,6 @@
     = form.input :name,      as: :hidden, input_html: { value: current_user.name }
     = form.input :email,     as: :hidden, input_html: { value: current_user.email }
     = form.input :body
+    = captchator_tags
   = form.actions do
     = form.action :submit

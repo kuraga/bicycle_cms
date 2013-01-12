@@ -80,12 +80,5 @@ module BicycleCms
          { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
       end
 
-      #XYZ
-
-      def set_flash_message?
-p 1234
-        true
-      end
-
   end
 end
