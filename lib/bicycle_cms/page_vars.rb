@@ -1,4 +1,3 @@
-require 'bicycle_cms/page_vars/property'
 require 'bicycle_cms/page_vars/breadcrumb'
 
 module BicycleCms
@@ -17,6 +16,7 @@ module BicycleCms
       class_variable_set :@@description, [ configatron.global_description || [] ]           unless class_variable_defined? :@@description
       class_variable_set :@@keywords,    [ Array.wrap(configatron.global_keywords) || [] ] unless class_variable_defined? :@@keywords
       class_variable_set :@@title,       [ configatron.global_title || [] ]                 unless class_variable_defined? :@@title
+      class_variable_set :@@breadcrumbs, [ ]                                                unless class_variable_defined? :@@breadcrumbs
     end
 
     # TODO Использовать хук
@@ -27,33 +27,32 @@ module BicycleCms
       @description ||= [ ]
       @keywords    ||= [ ]
       @title       ||= [ ]
+      @breadcrumbs ||= [ ]
     end
 
-    def page_vars_breadcrumbs; raise NotImplementedError;   end
-    def page_vars_stylesheets; self.class.class_variable_get(:@@stylesheets) + @stylesheets; end
     def page_vars_javascripts; self.class.class_variable_get(:@@javascripts) + @javascripts; end
     def page_vars_description; (self.class.class_variable_get(:@@description) + @description).reverse.join(' '); end
     def page_vars_keywords;    (self.class.class_variable_get(:@@keywords) + @keywords).reverse.collect { |keywords_set| keywords_set.join(' ') }.join(' '); end
     def page_vars_title;       (self.class.class_variable_get(:@@title) + @title).reverse.join(' | ');     end
     def page_vars_page_title;  (self.class.class_variable_get(:@@title) + @title).last;  end
+    def page_vars_stylesheets; self.class.class_variable_get(:@@stylesheets) + @stylesheets; end
+    def page_vars_breadcrumbs; self.class.class_variable_get(:@@breadcrumbs) + @breadcrumbs; end
 
-    def page_vars_add_breadcrumb  breadcrumb;  add_breadcrumb breadcrumb[:title], breadcrumb[:path];          end
-    def page_vars_add_breadcrumbs breadcrumbs; breadcrumbs.each { |breadcrumb| page_vars_add_breadcrumb breadcrumb }; end
-    def page_vars_add_stylesheet  stylesheet;  @stylesheets << stylesheet           if stylesheet.present?;   end
-    def page_vars_add_javascript  javascript;  @javascripts << javascript           if javascript.present?;   end
-    def page_vars_add_description description; @description << description          if description.present?;  end
-    def page_vars_add_keywords    keywords;    @keywords    << Array.wrap(keywords) if keywords.present?;    end
-    def page_vars_add_title       title;       @title       << title                if title.present?;        end
+    def page_vars_add_stylesheets *stylesheets; @stylesheets += Array.wrap(stylesheets); end
+    def page_vars_add_javascripts *javascripts; @javascripts += Array.wrap(javascripts); end
+    def page_vars_add_description description;  @description << description;             end
+    def page_vars_add_keywords    *keywords;    @keywords    << Array.wrap(keywords);    end
+    def page_vars_add_title       title;        @title       << title;                   end
+    def page_vars_add_breadcrumbs *breadcrumbs; p breadcrumbs; @breadcrumbs += Array.wrap(breadcrumbs); end
 
     module ClassMethods
 
-      def page_vars_add_breadcrumb  breadcrumb;  add_breadcrumb breadcrumb[:title], breadcrumb[:path];          end
-      def page_vars_add_breadcrumbs breadcrumbs; breadcrumbs.each { |breadcrumb| page_vars_add_breadcrumb breadcrumb }; end
-      def page_vars_add_stylesheet  stylesheet;  class_variable_get(:@@stylesheets) << stylesheet           if stylesheet.present?;  end
-      def page_vars_add_javascript  javascript;  class_variable_get(:@@javascripts) << javascript           if javascript.present?;  end
-      def page_vars_add_description description; class_variable_get(:@@description) << description          if description.present?; end
-      def page_vars_add_keywords    keywords;    class_variable_get(:@@keywords   ) << Array.wrap(keywords) if keywords.present?;    end
-      def page_vars_add_title       title;       class_variable_get(:@@title      ) << title                if title.present?;       end
+      def page_vars_add_stylesheets *stylesheets; class_variable_set(:@@stylesheets, class_variable_get(:@@stylesheets) + Array.wrap(stylesheets)); end
+      def page_vars_add_javascripts *javascripts; class_variable_set(:@@javascripts, class_variable_get(:@@javascripts) + Array.wrap(javascripts)); end
+      def page_vars_add_description description;  class_variable_set(:@@description, class_variable_get(:@@description) << description           ); end
+      def page_vars_add_keywords    *keywords;    class_variable_set(:@@keywords,    class_variable_get(:@@keywords   ) << Array.wrap(keywords)  ); end
+      def page_vars_add_title       title;        class_variable_set(:@@title,       class_variable_get(:@@title      ) << title                 ); end
+      def page_vars_add_breadcrumbs *breadcrumbs; class_variable_set(:@@breadcrumbs, class_variable_get(:@@breadcrumbs) + Array.wrap(breadcrumbs)); end
 
       # TODO page_vars_depends_on
 

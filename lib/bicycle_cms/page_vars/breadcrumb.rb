@@ -1,8 +1,15 @@
-require 'breadcrumbs_on_rails'
-
 module BicycleCms
   module PageVars
-    class Breadcrumb < Hash
+    class Breadcrumb < HashWithIndifferentAccess
+
+      def initialize title, path
+        super
+        self.merge! title: title, path: path
+      end
+
+      def to_partial_path
+        'breadcrumb'
+      end
 
     end
   end

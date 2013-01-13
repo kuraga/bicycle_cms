@@ -67,6 +67,10 @@ module BicycleCms
       ext_render properties, class_names: object_model_name.underscore, view: 'properties', role: role, as: :properties, locals: locals
     end
 
+    def render_breadcrumbs breadcrumbs
+      render partial: 'breadcrumbs', object: breadcrumbs
+    end
+
     def render_spoiler more_phrase = t('application.general.more'), &block
       content_tag :div, class: :spoiler_wrapper do
         concat ( link_to_function more_phrase, "$(this).next('.spoiler').toggle()" )

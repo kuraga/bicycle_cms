@@ -131,29 +131,25 @@ img.small_icon  { max-width: 32px; max-height: 32px;   }
 img.medium_icon { max-width: 64px; max-height: 64px;   }
 img.big_icon    { max-width: 128px; max-height: 128px; }
 
-#breadcrumbs {
-  clear: both;
-
-  ul {
-    display: inline-block;
-    margin: {
-      left: 0;
-      right: 0;
+ul.breadcrumbs {
+  display: inline-block;
+  margin: {
+    left: 0;
+    right: 0;
+  }
+  li.breadcrumb {
+    float: left;
+    list-style: inside circle;
+    margin-right: 3px;
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+      color: #559;
     }
-    li {
-      float: left;
-      list-style: inside circle;
-      margin-right: 3px;
-      a {
-        text-decoration: underline;
-        font-weight: bold;
-        color: #559;
-      }
 
-      &:hover, &:hover {
-        a {
-          color: red;
-        }
+    &:hover, &:hover {
+      a {
+        color: red;
       }
     }
   }

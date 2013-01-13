@@ -9,18 +9,13 @@ module BicycleCms
     include Redirector
     include RenderCallbacks
     include Roler
-
-    # TODO Избавиться
-    def self.inherited(subclass)
-      super
-      subclass.send :include, BicycleCms::PageVars
-    end
+    include PageVars
 
     responders :flash
     layout proc { |c| c.request.xhr? ? false : 'site' }
     helper :all
 
-    add_breadcrumb I18n.t('application.main.main_article'), :root_path
+    page_vars_add_breadcrumbs PageVars::Breadcrumb[title: I18n.t('application.main.main_article'), path: :root_path]
 
     protected
 
@@ -36,11 +31,11 @@ module BicycleCms
       options = page_vars_hash.slice(:only, :except)
       before_render_filter options do
         [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
-          send "page_vars_add_#{page_var_name}", page_vars_hash[page_var_name] if page_vars_hash.has_key? page_var_name
+          send "page_vars_add_#{page_var_name}", *Array.wrap(page_vars_hash[page_var_name]) if page_vars_hash.has_key? page_var_name
           # RAILS4 Условие можно заменить на try
-          send "page_vars_add_#{page_var_name}", resource.send(page_var_name) if params[:id] and resource.respond_to?(page_var_name) and resource.send(page_var_name).present?
+          send "page_vars_add_#{page_var_name}", *Array.wrap(resource.send(page_var_name)) if params[:id] and resource.respond_to?(page_var_name) and resource.send(page_var_name).present?
         end # TODO Как определить, есть ли resource?
-        page_vars_add_breadcrumb title: t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}"), path: polymorphic_path((title_action_name !~ /new/ ? resource : resource_class), action: title_action_name) unless title_action_name =~ /index|show|destroy/
+        page_vars_add_breadcrumbs PageVars::Breadcrumb[title: t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}"), path: polymorphic_path((title_action_name !~ /new/ ? resource : resource_class), action: title_action_name)] unless title_action_name =~ /index|show|destroy/
         page_vars_add_title t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}") if title_action_name =~ /new|create|edit|update|destroy/
       end
     end

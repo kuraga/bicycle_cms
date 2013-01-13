@@ -1,0 +1,2 @@
+%li.breadcrumb
+  = link_to_unless_current breadcrumb[:title], callable_from_handler(breadcrumb[:path]).call
