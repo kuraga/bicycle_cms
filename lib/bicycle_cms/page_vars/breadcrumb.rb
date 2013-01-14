@@ -4,7 +4,7 @@ module BicycleCms
 
       def initialize title, path
         super
-        self.merge! title: title, path: path
+        merge! title: title, path: path
       end
 
       def to_partial_path

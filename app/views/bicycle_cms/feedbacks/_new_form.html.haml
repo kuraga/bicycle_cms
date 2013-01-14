@@ -1,5 +1,6 @@
-= semantic_form_for feedback, url: '/feedback' do |form|
+= semantic_nested_form_for feedback, url: '/feedback' do |form|
   = form.inputs do
+    = captchator_tags
     = form.input :name
     = form.input :email
     = form.input :title

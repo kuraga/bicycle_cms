@@ -1,7 +1,7 @@
 = semantic_nested_form_for category do |form|
   = form.inputs do
     = form.input :title
-    =#XYZ form.input :slug
+    =# FIXME form.input :slug
     = form.input :ancestry, collection: category.possible_ancestries_options, include_blank: false
     = form.input :keywords
     = form.input :description

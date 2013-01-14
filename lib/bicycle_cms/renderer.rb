@@ -31,7 +31,7 @@ module BicycleCms
       ).uniq
 
       capture do
-        concat ( yield object ) if block_given?
+        yield object if block_given?
         concat ( 
           if object and as
             render partial: partials, object: object, as: as, locals: locals
@@ -44,17 +44,17 @@ module BicycleCms
 
     def render_form_for object, options = {}, &block
       capture do
-        concat ( yield object ) if block_given?
+        yield object if block_given?
         concat ( ext_render object, options.merge(view: 'form'), &block )
       end
     end
 
     def render_fields_for form, options = {}, &block
       object_model_name = form.object.class.model_name.to_s
-      role = options.delete(:role) || current_user_role_for(parent)
+      role = options.delete(:role) || (current_user_role_for(options[:parent]) if options.has_key?(:parent))
 
       capture do
-        concat ( yield object ) if block_given?
+        yield object if block_given?
         concat ( ext_render form, options.merge(class_names: object_model_name.underscore, view: 'fields', as: "#{object_model_name.demodulize.underscore}_form") )
       end
     end
@@ -83,7 +83,7 @@ module BicycleCms
     # TODO Избавиться
     def link_with_contenttype_icon attachment
       # TODO Случай отсутствия slug
-      # XYZ иконка одна и та же
+      # FIXME иконка одна и та же
       link_to(image_tag('mimes/application-pdf.png', class: 'mime_icon_small')+attachment.slug.presense(attachment.file), attachment.file.url).html_safe
     end
 

@@ -1,12 +1,8 @@
-require 'bicycle_cms/redirector'
-require 'bicycle_cms/roler'
-
 module BicycleCms
   class ApplicationController < ::ApplicationController
 
     inherit_resources
 
-    include Redirector
     include RenderCallbacks
     include Roler
     include PageVars
@@ -15,6 +11,9 @@ module BicycleCms
     layout proc { |c| c.request.xhr? ? false : 'site' }
     helper :all
 
+    page_vars_add_description BicycleCms.global_description
+    page_vars_add_keywords    BicycleCms.global_keywords
+    page_vars_add_title       BicycleCms.global_title
     page_vars_add_breadcrumbs PageVars::Breadcrumb[title: I18n.t('application.main.main_article'), path: :root_path]
 
     protected
@@ -41,7 +40,7 @@ module BicycleCms
     end
 
     protected
-      # TODO Перенести
+      # TODO Перенести и обдумать
 
       def resource
         get_resource_ivar || begin
@@ -65,7 +64,8 @@ module BicycleCms
         end
       end
 
-      # XYZ
+    protected
+      # TODO Перенести и обдумать
 
       def role_given?
         true
@@ -73,6 +73,13 @@ module BicycleCms
 
       def as_role
          { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
+      end
+
+      # XYZ
+
+      before_filter only: :create do
+        build_resource;
+        get_resource_ivar.errors.add(:base, "Captchator thinks you are a robot. Please try again.") unless verify_captchator
       end
 
   end

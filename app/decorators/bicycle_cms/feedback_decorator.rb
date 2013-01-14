@@ -11,10 +11,8 @@ module BicycleCms
 
     end
 
-    include Rails.application.routes.url_helpers # TODO Избавиться
-
     def breadcrumbs
-      Feedback.breadcrumbs << PageVars::Breadcrumb[title: title, path: feedback_path(self)]
+      Feedback.breadcrumbs << PageVars::Breadcrumb[title: title, path: feedback_path]
     end
 
   end

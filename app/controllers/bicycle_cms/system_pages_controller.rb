@@ -1,5 +1,5 @@
 module BicycleCms
-  class SystemArticlesController < ApplicationController
+  class SystemPagesController < ApplicationController
 
   end
 end

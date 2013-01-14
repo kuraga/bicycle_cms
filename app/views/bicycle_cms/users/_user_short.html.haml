@@ -7,7 +7,7 @@
   %td
     - if user.admin?
       = t('bicycle_cms/users.states.admin')
-    - else #XYZ
+    - else # FIXME
       = t('bicycle_cms/users.states.active')
   %td= (signed_in_as_admin? or user.show_email?) ? mail_to(user.email) : t('general.messages.hidden')
   %td= I18n.localize(user.created_at, format: :datetime_full)

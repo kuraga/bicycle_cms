@@ -1,4 +1,4 @@
-= semantic_form_for [comment.commentable, comment], remote: true do |form|
+= semantic_nested_form_for [comment.commentable, comment], remote: true do |form|
   = form.inputs do
     = form.input :name
     = form.input :email

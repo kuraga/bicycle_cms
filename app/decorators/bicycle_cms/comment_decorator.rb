@@ -2,7 +2,7 @@ module BicycleCms
   class CommentDecorator < ApplicationDecorator
 
     decorates_association :author
-    decorates_association :commentable, with: BicycleCms::Article #XYZ
+    decorates_association :commentable, with: BicycleCms::Article # FIXME
 
     class << self
 
@@ -20,7 +20,7 @@ module BicycleCms
     end
 
     def title
-      'TODO' # TODO
+      'NotImplementedYet' # FIXME
     end
 
   end

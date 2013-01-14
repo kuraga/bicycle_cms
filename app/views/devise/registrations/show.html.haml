@@ -1,4 +1,4 @@
-= semantic_form_for user do |form|
+= semantic_nested_form_for user do |form|
   = form.inputs do
     = form.semantic_fields_for :profile do |profile_form|
       = profile_form.input :avatar,     as: :uneditable, input_html: { value: link_to(image_tag(user.avatar.medium.url), user.avatar.url).html_safe }

@@ -1,6 +1,5 @@
 module BicycleCms
   class FeedbackMailer < AdminMailer
-    # TODO Избавиться от использования метода email_with_name
 
     def feedback_message feedback
       @feedback = feedback

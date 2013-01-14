@@ -1,6 +1,5 @@
 module BicycleCms
   class MailingMailer < StandardMailer
-    # TODO Избавиться от использования метода email_with_name
 
     def mailing_message mailing, user
       @mailing, @user = mailing, user

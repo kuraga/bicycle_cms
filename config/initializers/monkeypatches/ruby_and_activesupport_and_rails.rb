@@ -71,7 +71,7 @@ module ActiveModel
 end
 
 
-#XYZ
+# FIXME
 module ActionMailer
   class Base
 
@@ -97,7 +97,7 @@ module ActionView
             err = e
           end
         end
-        raise err # XYZ Не работает
+        raise err # FIXME Не работает
       else
         return render_template(context, options)
       end

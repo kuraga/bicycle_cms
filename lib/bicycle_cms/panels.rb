@@ -25,27 +25,11 @@ module BicycleCms
       as = options.delete(:as)
 
       content_tag :span, class: (block_given? ? :actions_with_sign : :actions_without_sign) do
-        begin
-          capture do
-            yield object if block_given?
-            concat ( content_tag :span, class: :actions do
-              ext_render object, view: :panel, as: as, locals: options
-            end )
-          end
-        rescue ActionView::MissingTemplate
-          capture do
-            yield object if block_given?
-            if capabilities.present?
-              concat ( semantic_form_for object do |form|
-                # TODO Почему приходится использовать фигурные скобки?
-                form.actions {
-                  capabilities.each { |capability|
-                    concat ( form.action capability, as: :panel_link )
-                  }
-                }
-              end )
-            end
-          end
+        capture do
+          yield object if block_given?
+          concat ( content_tag :span, class: :actions do
+            ext_render object, view: :panel, as: as, locals: options
+          end )
         end
       end
     end

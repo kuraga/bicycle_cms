@@ -21,8 +21,8 @@ module BicycleCms
     validates :email, format: { with: /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
     validates :body, presence: true
 
-    scope :anonymous, -> { where(arel_table[:author_id].eq(nil)) }
-    scope :publicous, -> { where(arel_table[:author_id].not_eq(nil)) }
+    scope :anonymous, -> { where{ author_id == nil } }
+    scope :publicous, -> { where{ author_id != nil } }
 
     def owned_by? user
       author.not_nil? and author.id == user.id

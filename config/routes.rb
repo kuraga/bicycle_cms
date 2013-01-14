@@ -5,7 +5,7 @@ BicycleCms::Engine.routes.draw do
 
     root configatron.route_root_to
 
-    get :admin_panel, to: 'system_articles#admin_panel'
+    get :admin_panel, to: 'system_pages#admin_panel'
 
     resources :articles, except: :index do
       resources :comments
@@ -27,7 +27,6 @@ BicycleCms::Engine.routes.draw do
 
     resources :users
 
-    # resource :feedback, only: [:new, :create] # TODO Зачем это?
     resources :feedbacks, except: [:edit, :update]
 
     resources :mailings, except: [:edit, :update]
@@ -45,8 +44,6 @@ BicycleCms::Engine.routes.draw do
       delete 'delete/:id' => 'orders#delete', as: :delete_from
       delete 'delete_product_inclusions/:id' => 'orders#delete_product_inclusions', as: :delete_product_inclusions_from
     end
-
-#    get '/*id' => "#{configatron.route_root_requests_to}#show", as: configatron.route_root_requests_to.singularize
 
   #  end
 

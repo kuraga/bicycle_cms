@@ -3,5 +3,7 @@ module BicycleCms
 
     decorates_association :author
 
+    # FIXME
+
   end
 end

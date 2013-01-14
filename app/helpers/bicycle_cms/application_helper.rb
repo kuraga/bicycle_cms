@@ -19,6 +19,8 @@ module BicycleCms
       main_app.respond_to?(method) ? true : super
     end
 
+    # TODO Разбить на подхелперы
+
     include ::ApplicationHelper
     include Roler
     include Renderer

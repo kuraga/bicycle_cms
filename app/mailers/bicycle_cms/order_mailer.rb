@@ -1,6 +1,5 @@
 module BicycleCms
   class OrderMailer < StandardMailer
-    # TODO Избавиться от использования метода email_with_name
 
     def order_message order
       @order = order

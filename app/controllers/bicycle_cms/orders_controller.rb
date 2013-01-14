@@ -3,9 +3,9 @@ module BicycleCms
 
     respond_to :html
     actions :all, only: [:show, :new, :create, :destroy]
-    #XYZ page_vars
+    # FIXME page_vars
     custom_actions resource: [:add, :update, :delete, :delete_product_inclusion]
-    before_filter :define_order, except: :create #XYZ
+    before_filter :define_order, except: :create
 
     def add
       order << params[:order_item]
@@ -29,11 +29,12 @@ module BicycleCms
     end
 
     def new
-      redirect_to order_path and return if order.blank?
+      redirect_to(order_path) and return if order.blank?
       new!
     end
 
     def create
+      # TODO Подумать, эти две строчки кривоваты
       build_resource
       @order.items = order.items
 

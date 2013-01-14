@@ -1,7 +1,7 @@
-- resource.build_profile #XYZ
-= semantic_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :post } do |form|
+- resource.build_profile # FIXME
+= semantic_nested_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :post } do |form|
   = form.inputs do
-    = # devise_error_messages! #XYZ Ошибка I18n::InvalidPluralizationData
+    = # devise_error_messages! # FIXME Ошибка I18n::InvalidPluralizationData
     = form.semantic_fields_for :profile do |profile_form|
       = form.input :email
       = form.input :password
