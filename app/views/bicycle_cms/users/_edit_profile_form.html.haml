@@ -1,5 +1,6 @@
 = semantic_nested_form_for current_user, url: update_profile_path do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.semantic_fields_for :profile do |profile_form|
       = form.input :email
       =# FIXME form.input :password

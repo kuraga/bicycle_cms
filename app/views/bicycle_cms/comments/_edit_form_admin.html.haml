@@ -1,5 +1,6 @@
 = semantic_nested_form_for [comment.commentable, comment], remote: true do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.input :author_id, as: :hidden
     = form.input :name,  input_html: { value: (comment.author_id.nil? ? comment.name : comment.author.name) }
     = form.input :email, input_html: { value: (comment.author_id.nil? ? comment.email : comment.author.email) }

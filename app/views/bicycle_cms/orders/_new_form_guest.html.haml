@@ -1,8 +1,10 @@
 = semantic_nested_form_for order, url: order_path do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.input :name
     = form.input :email
     = form.input :comment
+    = captchator_tags
   = form.actions do
     = form.action :submit
     = form.action :cancel

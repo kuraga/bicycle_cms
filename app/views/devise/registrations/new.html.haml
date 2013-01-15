@@ -1,6 +1,7 @@
 - resource.build_profile # FIXME
 = semantic_nested_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :post } do |form|
   = form.inputs do
+    = form.semantic_errors
     = # devise_error_messages! # FIXME Ошибка I18n::InvalidPluralizationData
     = form.semantic_fields_for :profile do |profile_form|
       = form.input :email
@@ -10,6 +11,7 @@
       = profile_form.input :name
       = profile_form.input :gender
       = profile_form.input :avatar
+      = captchator_tags
   = form.actions do
     = form.action :submit
     = form.action :cancel

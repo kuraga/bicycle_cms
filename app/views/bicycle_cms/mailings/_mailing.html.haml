@@ -1,5 +1,6 @@
 = semantic_nested_form_for mailing do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.input :created_at, as: :uneditable, value: I18n.localize(feedback.created_at, format: :datetime_full)
     = form.input :title,      as: :uneditable
     = form.input :body,       as: :uneditable

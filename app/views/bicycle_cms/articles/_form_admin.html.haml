@@ -1,5 +1,6 @@
 = semantic_nested_form_for article do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.input :title
     = form.input :slug
     = form.input :author, collection: BicycleCms::User.all, include_blank: false

@@ -1,5 +1,6 @@
 = semantic_nested_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |form|
   = form.inputs do
+    = form.semantic_errors
     = devise_error_messages!
     = form.input :email
   = form.actions do

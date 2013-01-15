@@ -1,7 +1,9 @@
 = semantic_nested_form_for [comment.commentable, comment], remote: true do |form|
   = form.inputs do
+    = form.semantic_errors
     = form.input :name
     = form.input :email
     = form.input :body
+    = captchator_tags
   = form.actions do
     = form.action :submit
