@@ -32,6 +32,7 @@ module BicycleCms
           end )
         end
       end
+    rescue ActionView::MissingTemplate
     end
 
     extend ActiveSupport::Autoload
