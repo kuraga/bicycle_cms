@@ -45,7 +45,6 @@ module BicycleCms
     autoload :UserPanel
     autoload :FeedbackPanel
     autoload :MailingPanel
-    autoload :ProductPanel
 
   end
 end
