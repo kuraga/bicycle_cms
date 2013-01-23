@@ -1,7 +1,5 @@
 У custom_action'ов не реализованы page_vars
 Невозможна смена пароля
-attachment не доступен, если не указать его имени, но это не воспрещается
-Как управлять уже закаченными attachments?
 
 link_action'ы не локализуется (panels не учитывает нэймспейс)
 Пол не локализуется (active_enum не учитывает нэймспейс)
@@ -15,7 +13,6 @@ multiple_table_inheritance - избавиться от product_id
 Конфигурация (осталось `%w(app/controllers/application.rb app/models app/uploaders app/views)` )
 Валидации (обратить внимание на запрещенные символы и на условные вылидации!)
 carrierwave - ошибки надо обрабатывать
-Обновить версии гемов
 Переглядеть stylesheet'ы
 Избавиться от использования метода email_with_name
 Генераторы

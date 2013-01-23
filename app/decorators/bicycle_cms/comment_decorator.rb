@@ -2,7 +2,7 @@ module BicycleCms
   class CommentDecorator < ApplicationDecorator
 
     decorates_associations :author
-    decorates_association :commentable, with: BicycleCms::Article # FIXME
+    decorates_association :commentable, with: BicycleCms::ArticleDecorator # FIXME
 
     class << self
 

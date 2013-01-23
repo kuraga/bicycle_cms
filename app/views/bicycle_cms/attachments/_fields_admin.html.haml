@@ -1,5 +1,6 @@
 = attachment_form.inputs do
   = # FIXME attachment_form.semantic_errors
+  = link_to attachment_form.object.file.url, attachment_form.object.file.url unless attachment_form.object.new_record? # TODO Нормальное отображение
   = attachment_form.input :file
   = attachment_form.input :slug
   = attachment_form.input :show_in_list

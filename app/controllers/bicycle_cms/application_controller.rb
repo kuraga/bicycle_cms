@@ -59,13 +59,19 @@ module BicycleCms
 
     protected
       # TODO Перенести и обдумать
+      def self.inherited subclass
+        super
+        subclass.class_eval do
 
-      def role_given?
-        true
-      end
+          def role_given?
+            true
+          end
 
-      def as_role
-         { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
+          def as_role
+            { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }.tap {|x|p x}
+          end
+
+        end
       end
 
   end

@@ -1,6 +1,7 @@
 require 'active_support/all'
 require 'rails'
 require 'configatron'
+require 'randexp'
 
 require 'mini_record'
 require 'default_value_for'
