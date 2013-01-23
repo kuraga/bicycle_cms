@@ -2,6 +2,7 @@ module BicycleCms
   class ArticlesController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all, except: :index
     page_vars
 

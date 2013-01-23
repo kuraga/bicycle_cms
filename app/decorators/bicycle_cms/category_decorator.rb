@@ -1,9 +1,10 @@
 module BicycleCms
   class CategoryDecorator < ApplicationDecorator
 
-    decorates_association :attachments
-    decorates_association :articles
-    decorates_association :products
+    decorates_associations :attachments
+
+    decorates_associations :articles, :products
+    # TODO Разобраться с предыдущей строчкой
     # TODO Декорация ancestors ?
 
     class << self

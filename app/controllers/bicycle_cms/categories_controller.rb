@@ -2,6 +2,7 @@ module BicycleCms
   class CategoriesController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all, except: :index
     custom_actions resource: :tree
     page_vars

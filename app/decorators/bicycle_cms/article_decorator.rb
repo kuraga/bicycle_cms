@@ -1,10 +1,7 @@
 module BicycleCms
   class ArticleDecorator < ApplicationDecorator
 
-    decorates_association :category
-    decorates_association :author
-    decorates_association :attachments
-    decorates_association :comments
+    decorates_associations :category, :author, :attachments, :comments
 
     class << self
 

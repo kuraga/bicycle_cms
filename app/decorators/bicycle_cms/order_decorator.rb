@@ -1,7 +1,7 @@
 module BicycleCms
   class OrderDecorator < ApplicationDecorator
 
-    decorates_association :author
+    decorates_associations :author
 
     # FIXME
 

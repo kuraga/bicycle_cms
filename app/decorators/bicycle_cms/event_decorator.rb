@@ -1,7 +1,7 @@
 module BicycleCms
   class EventDecorator < ApplicationDecorator
 
-    decorates_association :attachments
+    decorates_associations :attachments
 
     class << self
 

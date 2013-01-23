@@ -1,8 +1,6 @@
 module BicycleCms
   class ApplicationController < ::ApplicationController
 
-    inherit_resources
-
     include RenderCallbacks
     include Roler
     include PageVars
@@ -18,51 +16,46 @@ module BicycleCms
 
     protected
 
-    def title_action_name 
-      case action_name
+      # TODO
+      before_filter do
+        self.class.before_render_filter do
+          set_resource_ivar(begin; get_resource_ivar.decorate; rescue NameError; get_resource_ivar; end) if get_resource_ivar
+          set_collection_ivar(begin; get_collection_ivar.decorate; rescue NameError; get_collection_ivar; end) if get_collection_ivar
+        end
+      end
+
+    protected
+
+      def title_action_name 
+        case action_name
         when /create/ then 'new'
         when /update/ then 'edit'
         else action_name
-      end
-    end
-
-    def self.page_vars page_vars_hash = {}
-      options = page_vars_hash.slice(:only, :except)
-      before_render_filter options do
-        [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
-          send "page_vars_add_#{page_var_name}", *Array.wrap(page_vars_hash[page_var_name]) if page_vars_hash.has_key? page_var_name
-          # RAILS4 Условие можно заменить на try
-          send "page_vars_add_#{page_var_name}", *Array.wrap(resource.send(page_var_name)) if params[:id] and resource.respond_to?(page_var_name) and resource.send(page_var_name).present?
-        end # TODO Как определить, есть ли resource?
-        page_vars_add_breadcrumbs PageVars::Breadcrumb[title: t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}"), path: polymorphic_path((title_action_name !~ /new/ ? resource : resource_class), action: title_action_name)] unless title_action_name =~ /index|show|destroy/
-        page_vars_add_title t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}") if title_action_name =~ /new|create|edit|update|destroy/
-      end
-    end
-
-    protected
-      # TODO Перенести и обдумать
-
-      def resource
-        get_resource_ivar || begin
-          resource_local = end_of_association_chain.send(method_for_find, params[:id])
-          resource_local.decorate; set_resource_ivar(begin; resource_local.decorate; rescue NameError; resource_local; end)
         end
       end
 
-      def build_resource
-        get_resource_ivar || begin
-          resource_local = end_of_association_chain.send(method_for_build, *resource_params)
-          set_resource_ivar(begin; resource_local.decorate; rescue NameError; resource_local; end)
+      def self.page_vars page_vars_hash = {}
+        options = page_vars_hash.slice(:only, :except)
+        before_render_filter options do
+          [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
+            send "page_vars_add_#{page_var_name}", *Array.wrap(page_vars_hash[page_var_name]) if page_vars_hash.has_key? page_var_name
+            # RAILS4 Условие можно заменить на try
+            send "page_vars_add_#{page_var_name}", *Array.wrap(resource.send(page_var_name)) if params[:id] and resource.respond_to?(page_var_name) and resource.send(page_var_name).present?
+          end # TODO Как определить, есть ли resource?
+          page_vars_add_breadcrumbs PageVars::Breadcrumb[title: t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}"), path: polymorphic_path((title_action_name !~ /new/ ? resource : resource_class), action: title_action_name)] unless title_action_name =~ /index|show|destroy/
+          page_vars_add_title t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}") if title_action_name =~ /new|create|edit|update|destroy/
         end
       end
 
-      def collection
-        get_collection_ivar || begin
-          c = end_of_association_chain
-          collection_local = c.respond_to?(:scoped) ? c.scoped : c.all
-          set_collection_ivar(begin; collection_local.decorate; rescue NameError; collection_local; end)
-        end
+=begin
+   protected
+
+      # FIXME
+      before_filter only: :create do
+        build_resource
+        get_resource_ivar.errors.add(:base, "Captchator thinks you are a robot. Please try again.") unless verify_captchator
       end
+=end
 
     protected
       # TODO Перенести и обдумать
@@ -73,13 +66,6 @@ module BicycleCms
 
       def as_role
          { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
-      end
-
-      # XYZ
-
-      before_filter only: :create do
-        build_resource;
-        get_resource_ivar.errors.add(:base, "Captchator thinks you are a robot. Please try again.") unless verify_captchator
       end
 
   end

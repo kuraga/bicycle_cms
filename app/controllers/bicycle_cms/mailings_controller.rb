@@ -2,6 +2,7 @@ module BicycleCms
   class MailingsController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all, except: [:edit, :update]
     page_vars
 

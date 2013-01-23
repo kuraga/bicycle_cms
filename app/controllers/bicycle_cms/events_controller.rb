@@ -2,6 +2,7 @@ module BicycleCms
   class EventsController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all
     page_vars
 

@@ -2,6 +2,7 @@ module BicycleCms
   class UsersController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all, except: :new
     page_vars except: [:profile, :edit_profile, :update_profile]
 

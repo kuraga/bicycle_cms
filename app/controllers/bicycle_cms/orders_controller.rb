@@ -2,6 +2,7 @@ module BicycleCms
   class OrdersController < ApplicationController
 
     respond_to :html
+    inherit_resources
     actions :all, only: [:show, :new, :create, :destroy]
     # FIXME page_vars
     custom_actions resource: [:add, :update, :delete, :delete_product_inclusion]
