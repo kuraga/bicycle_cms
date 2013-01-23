@@ -3,7 +3,7 @@ module BicycleCms
 
     respond_to :html, :js
     inherit_resources
-    belongs_to :article, polymorphic: true, parent_class: BicycleCms::Article # FIXME
+    # FIXME belongs_to :article, polymorphic: true, parent_class: BicycleCms::Article # FIXME
     actions :all
     page_vars
 
