@@ -8,13 +8,8 @@ class PanelLinkAction < Formtastic::Actions::LinkAction
     object_model_names = object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name.to_s }
 
     object_model_names.each do |object_model_name|
-      begin
-        return "BicycleCms::Panels::#{object_model_name.demodulize.camelize}Panel".constantize.supported_capabilities
-      rescue NameError
-      end
+      return "BicycleCms::Panels::#{object_model_name.demodulize.camelize}Panel".constantize.supported_capabilities rescue NameError
     end
-
-    # TODO autoload?
     []
   end
 
@@ -23,12 +18,8 @@ class PanelLinkAction < Formtastic::Actions::LinkAction
 
     wrapper do
       object_model_names.each do |object_model_name|
-        begin
-          return template.send "#{method}_#{object_model_name.demodulize.underscore}_link", object
-        rescue NoMethodError
-        end
+        return template.send "#{method}_#{object_model_name.demodulize.underscore}_link", object, options, wrapper_html_options rescue NoMethodError
       end
-
       ''
     end
   end
