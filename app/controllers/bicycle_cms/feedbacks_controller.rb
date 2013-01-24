@@ -8,6 +8,8 @@ module BicycleCms
 
     before_filter :authenticate_admin!, except: [:new, :create]
 
+    before_filter(only: :create) { build_resource; get_resource_ivar.errors.add(:base, I18n.t('general.messages.captcha_error')) unless verify_captchator if params[:captchator_answer] }
+
     def create
       create! do |success,failure|
         success.any do

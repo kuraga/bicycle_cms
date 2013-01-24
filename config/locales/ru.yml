@@ -39,6 +39,7 @@ ru:
       false_value: Нет
       no_description: (нет описания)
       no_keywords: (нет ключевых слов)
+      captcha_error: Код с картинки введен неверно
     actions_short:
       new: Создать...
       create: Создать

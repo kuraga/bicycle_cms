@@ -27,8 +27,6 @@ require 'devise'
 require 'carrierwave'
 require 'mini_magick'
 
-require 'captchator'
-
 require 'bicycle_cms/version'
 require 'bicycle_cms/engine'
 
@@ -37,9 +35,10 @@ require 'bicycle_cms/page_vars'
 require 'bicycle_cms/roler'
 require 'bicycle_cms/default_scopes'
 require 'bicycle_cms/mail_interceptor'
+require 'panel_link_action'
 require 'bicycle_cms/renderer'
 require 'bicycle_cms/panels'
-require 'panel_link_action'
+require 'bicycle_cms/captcha'
 
 module BicycleCms
 

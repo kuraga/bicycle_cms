@@ -4,6 +4,7 @@ module BicycleCms
     include RenderCallbacks
     include Roler
     include PageVars
+    include Captcha::Controller
 
     responders :flash
     layout proc { |c| c.request.xhr? ? false : 'site' }
@@ -47,17 +48,8 @@ module BicycleCms
         end
       end
 
-=begin
-   protected
-
-      # FIXME
-      before_filter only: :create do
-        build_resource
-        get_resource_ivar.errors.add(:base, "Captchator thinks you are a robot. Please try again.") unless verify_captchator
-      end
-=end
-
     protected
+
       # TODO Перенести и обдумать
       def self.inherited subclass
         super

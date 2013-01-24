@@ -31,6 +31,8 @@ DefaultScopes, FriendlyId должны подключаться автомати
 Реорганизовать PageVars
 Реорганизовать Panels
 Реорганизовать DefaultScopes
+Реорганизовать модули (в lib)
+Отделить initializers в зависимости
 Некоторые поля, например, registered_at, должны выставляться в контроллере, а не передаваться через форму.
 stringify или symbolize везде?
 

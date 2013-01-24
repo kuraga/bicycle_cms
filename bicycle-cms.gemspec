@@ -26,7 +26,7 @@ Gem::Specification.new do |specification|
 
   specification.add_dependency 'mini_record',                '~>0.3.1'
   specification.add_dependency 'default_value_for',          '~>2.0.1'
-  specification.add_dependency 'squeel',                     '~>1.0.14'
+  specification.add_dependency 'squeel',                     '~>1.0.15'
   specification.add_dependency 'active_enum',                '~>0.9.12'
   specification.add_dependency 'randexp',                    '~>0.1.7'
   specification.add_dependency 'multiple_table_inheritance', '~>0.2.1'
@@ -43,9 +43,8 @@ Gem::Specification.new do |specification|
 
   specification.add_dependency 'friendly_id',                '~>4.0.9'
   specification.add_dependency 'devise',                     '~>2.1.2' # FIXME '~>2.2.2'
-  specification.add_dependency 'carrierwave',                '~>0.6.0'
+  specification.add_dependency 'carrierwave',                '~>0.6.0' # FIXME '~>0.8.0'
   specification.add_dependency 'mini_magick',                '~>3.4'
 
   specification.add_dependency 'aloha-rails-improved' # FIXME версия
-  specification.add_dependency 'captchator',                 '~>0.0.4'
 end

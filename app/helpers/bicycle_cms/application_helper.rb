@@ -1,9 +1,3 @@
-require 'bicycle_cms/page_vars'
-require 'bicycle_cms/roler'
-require 'bicycle_cms/renderer'
-require 'bicycle_cms/panels'
-require 'bicycle_cms/erb_sandbox'
-
 module BicycleCms
   module ApplicationHelper
 
@@ -26,6 +20,7 @@ module BicycleCms
     include Renderer
     include ErbSandbox
     include Panels
+    include Captcha::View
 
     def current_user
       UserDecorator.new super
