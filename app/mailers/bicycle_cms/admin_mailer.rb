@@ -6,7 +6,7 @@ module BicycleCms
 
     default to: ActionMailer::Base.email_with_name(BicycleCms.admin_email, BicycleCms.admin_name)
 
-    layout 'mail_admin'
+    layout 'admin_mail'
 
     helper ApplicationHelper # TODO Должно быть :all
 

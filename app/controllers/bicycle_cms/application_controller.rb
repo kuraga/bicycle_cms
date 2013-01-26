@@ -20,8 +20,8 @@ module BicycleCms
       # TODO
       before_filter do
         self.class.before_render_filter do
-          set_resource_ivar(begin; get_resource_ivar.decorate; rescue NameError; get_resource_ivar; end) if get_resource_ivar
-          set_collection_ivar(begin; get_collection_ivar.decorate; rescue NameError; get_collection_ivar; end) if get_collection_ivar
+          set_resource_ivar(begin; get_resource_ivar.decorate; rescue NameError; get_resource_ivar; end) if respond_to?(:get_resource_ivar)
+          set_collection_ivar(begin; get_collection_ivar.decorate; rescue NameError; get_collection_ivar; end) if respond_to?(:get_collection_ivar)
         end
       end
 

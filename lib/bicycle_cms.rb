@@ -1,6 +1,5 @@
 require 'active_support/all'
 require 'rails'
-require 'configatron'
 require 'randexp'
 
 require 'mini_record'
@@ -42,6 +41,18 @@ require 'bicycle_cms/captcha'
 
 module BicycleCms
 
+=begin
+    # FIXME
+    config.session_store :active_record_store
+    config.active_record.timestamped_migrations = false
+    config.active_record.whitelist_attributes = true
+    config.active_record.mass_assignment_sanitizer = :strict
+    config.cache_store = :memory_store
+    config.assets.enabled = true
+    config.assets.version = '1.0'
+    config.assets.precompile += %w(*)
+=end
+
   mattr_accessor :admin_email
   @@admin_email = 'email@example.com'
 
@@ -60,8 +71,13 @@ module BicycleCms
   mattr_accessor :global_title
   @@global_title = 'Site Title'
 
-
   mattr_accessor :number_of_prebuild_attachments
   @@number_of_prebuild_attachments = 5
+
+  mattr_accessor :root_route
+  @@root_route = [ { :to => 'articles#show', :id => 1 } ]
+
+  mattr_accessor :pepper
+  @@pepper = 'FIXME'
 
 end
