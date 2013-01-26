@@ -39,10 +39,11 @@ module BicycleCms
       build_resource
       @order.items = order.items
 
-      create! do |success,failure|
+      create! do |success, failure|
         success.any do
           order.clear
           # TODO оплата и т.п.
+          @order.deliver
           redirect_to root_path
         end
       end

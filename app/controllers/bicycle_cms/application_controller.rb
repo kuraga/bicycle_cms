@@ -60,7 +60,7 @@ module BicycleCms
           end
 
           def as_role
-            { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }.tap {|x|p x}
+            { :as => current_user_role_for(params[:id] ? resource : nil) || self.resources_configuration[:self][:role] || :default }
           end
 
         end

@@ -11,9 +11,9 @@ module BicycleCms
     before_filter(only: :create) { build_resource; get_resource_ivar.errors.add(:base, I18n.t('general.messages.captcha_error')) unless verify_captchator if params[:captchator_answer] }
 
     def create
-      create! do |success,failure|
+      create! do |success, failure|
         success.any do
-          @feedback.deliver ? nil : redirect_to(new_feedback_path)
+          redirect_to(@feedback.deliver ? root_path : new_feedback_path)
         end
       end
     end

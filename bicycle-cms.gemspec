@@ -20,7 +20,6 @@ Gem::Specification.new do |specification|
   specification.add_dependency 'sass-rails',                 '~>3.2.6'
   specification.add_dependency 'jquery-rails',               '~>2.2.0'
   specification.add_dependency 'coffee-rails',               '~>3.2.2'
-  specification.add_dependency 'execjs'
   specification.add_dependency 'therubyracer',               '~>0.11.1'
   specification.add_dependency 'uglifier',                   '>=1.3.0'
 

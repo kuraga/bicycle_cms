@@ -49,7 +49,7 @@ module BicycleCms
   @@admin_name = 'Administrator'
 
   mattr_accessor :hostname
-  @@hostname = 'http://example.com'
+  @@hostname = 'example.com'
 
   mattr_accessor :global_description
   @@global_description = 'Site description'

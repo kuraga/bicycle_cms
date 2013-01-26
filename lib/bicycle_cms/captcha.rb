@@ -18,7 +18,7 @@ module BicycleCms
       
     end
 
-    module View
+    module Helper
 
       extend ActiveSupport::Concern
 

@@ -1,0 +1,6 @@
+%p.main_description! Поступил заказ ##{@order.id} от #{name_with_email(@order.name, @order.email)}.
+
+%p= @order.comment
+
+%h3! Заказанные товары:
+%div= render(@order)
