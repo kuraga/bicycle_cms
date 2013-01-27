@@ -41,7 +41,7 @@ module BicycleCms
           [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
             send "page_vars_add_#{page_var_name}", *Array.wrap(page_vars_hash[page_var_name]) if page_vars_hash.has_key? page_var_name
             # RAILS4 Условие можно заменить на try
-            send "page_vars_add_#{page_var_name}", *Array.wrap(resource.send(page_var_name)) if params[:id] and resource.respond_to?(page_var_name) and resource.send(page_var_name).present?
+            send "page_vars_add_#{page_var_name}", *Array.wrap(resource.send(page_var_name)) if params[:id] && resource.respond_to?(page_var_name) && resource.send(page_var_name).present?
           end # TODO Как определить, есть ли resource?
           page_vars_add_breadcrumbs PageVars::Breadcrumb[title: t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}"), path: polymorphic_path((title_action_name !~ /new/ ? resource : resource_class), action: title_action_name)] unless title_action_name =~ /index|show|destroy/
           page_vars_add_title t("#{resource_class.model_name.to_s.underscore.pluralize}.actions.#{title_action_name}") if title_action_name =~ /new|create|edit|update|destroy/

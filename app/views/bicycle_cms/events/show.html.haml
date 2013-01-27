@@ -2,7 +2,7 @@
 
 = render @event
 
-- if @event.is_commentable or signed_in_as_admin?
+- if @event.is_commentable || signed_in_as_admin?
   .comments
     %h3= t('bicycle_cms/comments.main.bicycle_cms/comments')
     = render(@event.comments) || t('general.messages.empty')

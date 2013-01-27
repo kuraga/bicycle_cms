@@ -2,7 +2,7 @@
 
 = render @article
 
-- if (@article.is_commentable and not @article.is_page?) or signed_in_as_admin?
+- if (@article.is_commentable && !@article.is_page?) || signed_in_as_admin?
   #comments
     %h3= t('bicycle_cms/comments.main.bicycle_cms/comments')
     = render(@article.comments) || t('general.messages.empty')

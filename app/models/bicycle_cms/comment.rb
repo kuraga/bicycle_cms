@@ -25,7 +25,7 @@ module BicycleCms
     scope :publicous, -> { where{ author_id != nil } }
 
     def owned_by?(user)
-      author.not_nil? and author.id == user.id
+      author.not_nil? && author.id == user.id
     end
 
   end

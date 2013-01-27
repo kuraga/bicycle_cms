@@ -33,7 +33,7 @@ module BicycleCms
       capture do
         yield object if block_given?
         concat ( 
-          if object and as
+          if object && as
             render partial: partials, object: object, as: as, locals: locals
           else
             render partial: partials, locals: locals

@@ -3,13 +3,13 @@ module BicycleCms
 
     # TODO Подумать
     def method_missing(method, *args, &block)
-      return super unless method.to_s.end_with?('_path') or method.to_s.end_with?('_url')
+      return super unless method.to_s.end_with?('_path') || method.to_s.end_with?('_url')
 
       main_app.respond_to?(method) ? main_app.send(method, *args, &block) : super
     end
  
     def respond_to?(method, *args)
-      return super unless method.to_s.end_with?('_path') or method.to_s.end_with?('_url')
+      return super unless method.to_s.end_with?('_path') || method.to_s.end_with?('_url')
 
       main_app.respond_to?(method, *args) ? true : super
     end

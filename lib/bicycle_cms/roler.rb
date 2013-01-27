@@ -2,11 +2,11 @@ module BicycleCms
   module Roler
 
     def signed_in_as_active_user?
-      signed_in? and current_user.active?
+      signed_in? && current_user.active?
     end
 
     def signed_in_as_admin?
-      signed_in? and current_user.admin?
+      signed_in? && current_user.admin?
     end
 
     def current_user_is? user
@@ -34,12 +34,12 @@ module BicycleCms
 
       if roles.include?(:universal)
         ''.to_sym
-      elsif roles.include?(:admin) and signed_in_as_admin?
+      elsif roles.include?(:admin) && signed_in_as_admin?
         :admin
-      elsif roles.include?(:creator) and (object.nil? or object.try :new_record?)
+      elsif roles.include?(:creator) && (object.nil? || object.try :new_record?)
         :creator
       elsif signed_in?
-        if roles.include?(:owner) and not owner.nil? and owner == current_user
+        if roles.include?(:owner) && !owner.nil? && owner == current_user
           :owner
         elsif roles.include?(:user)
           :user

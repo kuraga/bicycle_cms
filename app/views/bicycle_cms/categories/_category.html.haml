@@ -1,5 +1,5 @@
 = div_for category do
-  - if category.thumbnail.present? or category.body.present? or category.properties.present?
+  - if category.thumbnail.present? || category.body.present? || category.properties.present?
     .annotation
       - if category.thumbnail.present?
         .thumbnail
