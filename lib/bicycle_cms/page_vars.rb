@@ -34,21 +34,21 @@ module BicycleCms
 
     module ClassMethods
 
-      def page_vars_add_stylesheets *stylesheets; class_variable_set(:@@stylesheets, class_variable_get(:@@stylesheets) + Array.wrap(stylesheets)); end
-      def page_vars_add_javascripts *javascripts; class_variable_set(:@@javascripts, class_variable_get(:@@javascripts) + Array.wrap(javascripts)); end
-      def page_vars_add_description description;  class_variable_set(:@@description, class_variable_get(:@@description) << description           ); end
-      def page_vars_add_keywords    *keywords;    class_variable_set(:@@keywords,    class_variable_get(:@@keywords   ) << Array.wrap(keywords)  ); end
-      def page_vars_add_title       title;        class_variable_set(:@@title,       class_variable_get(:@@title      ) << title                 ); end
-      def page_vars_add_breadcrumbs *breadcrumbs; class_variable_set(:@@breadcrumbs, class_variable_get(:@@breadcrumbs) + Array.wrap(breadcrumbs)); end
+      def page_vars_add_stylesheets(*stylesheets); class_variable_set(:@@stylesheets, class_variable_get(:@@stylesheets) + Array.wrap(stylesheets)); end
+      def page_vars_add_javascripts(*javascripts); class_variable_set(:@@javascripts, class_variable_get(:@@javascripts) + Array.wrap(javascripts)); end
+      def page_vars_add_description(description);  class_variable_set(:@@description, class_variable_get(:@@description) << description           ); end
+      def page_vars_add_keywords(*keywords);       class_variable_set(:@@keywords,    class_variable_get(:@@keywords   ) << Array.wrap(keywords)  ); end
+      def page_vars_add_title(title);              class_variable_set(:@@title,       class_variable_get(:@@title      ) << title                 ); end
+      def page_vars_add_breadcrumbs(*breadcrumbs); class_variable_set(:@@breadcrumbs, class_variable_get(:@@breadcrumbs) + Array.wrap(breadcrumbs)); end
 
     end
 
-    def page_vars_add_stylesheets *stylesheets; instance_variable_set(:@stylesheets, instance_variable_get(:@stylesheets) + Array.wrap(stylesheets)); end
-    def page_vars_add_javascripts *javascripts; instance_variable_set(:@javascripts, instance_variable_get(:@javascripts) + Array.wrap(javascripts)); end
-    def page_vars_add_description description;  instance_variable_set(:@description, instance_variable_get(:@description) << description           ); end
-    def page_vars_add_keywords    *keywords;    instance_variable_set(:@keywords,    instance_variable_get(:@keywords   ) << Array.wrap(keywords)  ); end
-    def page_vars_add_title       title;        instance_variable_set(:@title,       instance_variable_get(:@title      ) << title                 ); end
-    def page_vars_add_breadcrumbs *breadcrumbs; instance_variable_set(:@breadcrumbs, instance_variable_get(:@breadcrumbs) + Array.wrap(breadcrumbs)); end
+    def page_vars_add_stylesheets(*stylesheets); instance_variable_set(:@stylesheets, instance_variable_get(:@stylesheets) + Array.wrap(stylesheets)); end
+    def page_vars_add_javascripts(*javascripts); instance_variable_set(:@javascripts, instance_variable_get(:@javascripts) + Array.wrap(javascripts)); end
+    def page_vars_add_description(description);  instance_variable_set(:@description, instance_variable_get(:@description) << description           ); end
+    def page_vars_add_keywords(*keywords);       instance_variable_set(:@keywords,    instance_variable_get(:@keywords   ) << Array.wrap(keywords)  ); end
+    def page_vars_add_title(title);              instance_variable_set(:@title,       instance_variable_get(:@title      ) << title                 ); end
+    def page_vars_add_breadcrumbs(*breadcrumbs); instance_variable_set(:@breadcrumbs, instance_variable_get(:@breadcrumbs) + Array.wrap(breadcrumbs)); end
 
 
     def page_vars_stylesheets; self.class.class_variable_get(:@@stylesheets) + @stylesheets; end

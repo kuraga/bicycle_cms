@@ -31,7 +31,7 @@ module BicycleCms
       end
 
       def captchator_input
-        text_field_tag(:captchator_answer)
+        text_field_tag :captchator_answer
       end
 
       def captchator_refresh

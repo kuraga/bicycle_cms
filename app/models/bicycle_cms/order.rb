@@ -32,17 +32,17 @@ module BicycleCms
 
     delegate *(HashWithIndifferentAccess.instance_methods-Object.instance_methods), to: :items
 
-    def << order_item
+    def <<(order_item)
       items[@current_order_id] = order_item
       @current_order_id += 1
       self
     end
 
-    def items_of product_id
+    def items_of(product_id)
       items.select { |order_item_id,order_item| order_item[:product_id].to_i == product_id }
     end
 
-    def delete_product_inclusions product_id
+    def delete_product_inclusions(product_id)
       items.delete_if { |order_item_id, order_item| order_item[:product_id]==product_id }
     end
 

@@ -15,7 +15,7 @@ module BicycleCms
         []
       end
 
-      def categories_options items = BicycleCms::Category.scoped.arrange, block = ->(i) { "#{'-' * i.depth} #{i.title}" }
+      def categories_options(items = BicycleCms::Category.scoped.arrange, block = ->(i) { "#{'-' * i.depth} #{i.title}" })
         items.inject [] do |res, (item, sub_items)|
           res + [ [block.call(item), item.id], *categories_options(sub_items, block) ]
         end
@@ -31,7 +31,7 @@ module BicycleCms
     end
 
     # TODO Выбор возвращаемых параметров (only-except)
-    def properties options = {}
+    def properties(options = {})
       [
         PageVars::Property[name: :description,  label: t('bicycle_cms/categories.attributes.description'),  value: description],
         PageVars::Property[name: :keywords,     label: t('bicycle_cms/categories.attributes.keywords'),     value: keywords   ],
@@ -39,7 +39,7 @@ module BicycleCms
       ]
     end
 
-    def possible_ancestries_options items = BicycleCms::Category.scoped.arrange, block = ->(i) { "#{'-' * i.depth} #{i.title}" }, ancestries = []
+    def possible_ancestries_options(items = BicycleCms::Category.scoped.arrange, block = ->(i) { "#{'-' * i.depth} #{i.title}" }, ancestries = [])
       items.inject [] do |res, (item, sub_items)|
         res + (item == self ? [] : [ [block.call(item), ancestries.blank? ? "#{item.id}" : "#{ancestries.join('/')}/#{item.id}"], *possible_ancestries_options(sub_items, block, ancestries.dup << item.id) ])
       end

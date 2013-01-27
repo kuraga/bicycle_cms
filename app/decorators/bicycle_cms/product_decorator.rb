@@ -1,7 +1,7 @@
 module BicycleCms
   class ProductDecorator < ApplicationDecorator
 
-    def properties options = {}
+    def properties(options = {})
       []
     end
 

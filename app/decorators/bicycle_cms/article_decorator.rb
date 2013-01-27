@@ -19,7 +19,7 @@ module BicycleCms
     end
 
     # TODO Выбор возвращаемых параметров (only-except)
-    def properties options = {}
+    def properties(options = {})
       [
         PageVars::Property[name: :author,       label: t('bicycle_cms/articles.attributes.published_by'),   value: author.fullname                    ],
         PageVars::Property[name: :published_at, label: t('bicycle_cms/articles.attributes.published_at'),   value: l(published_at, format: :date_full)],

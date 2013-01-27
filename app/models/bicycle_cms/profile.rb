@@ -6,7 +6,7 @@ module BicycleCms
     col :avatar,     as: :string,  null: false, default: ''
     col :show_email, as: :boolean, null: false, default: false
 
-    # TODO Роль :default не должна обладать правами (сейчас ошибка devise)
+    # TODO Роль :default не должна обладать правами (devise использует именно ее)
     attr_accessible :name, :show_email, :gender, :avatar, :remove_avatar, as: [:creator, :owner, :admin, :default]
     mount_uploader :avatar, AvatarUploader
     enumerate(:gender) { values_id_as_name :female, :male, :undefined }

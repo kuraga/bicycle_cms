@@ -5,9 +5,8 @@ module BicycleCms
 
     module ClassMethods
 
-      def define_default_scopes scope_attributes
+      def define_default_scopes(scope_attributes)
         class_eval do
-
           attributes_cached = attribute_names.map(&:to_sym)
           scope_attributes.reverse_merge! is_active: :is_active, owner: :author, created_at: :published_at
 
@@ -17,7 +16,6 @@ module BicycleCms
             def self.latest;                  order(scope_attributes[:created_at]).first;                   end
             def self.recent(period = 1.week); where{ scope_attributes[:created_at] > Time.current-period }; end
           end if attributes_cached.include? scope_attributes[:created_at]
-
         end
       end
 

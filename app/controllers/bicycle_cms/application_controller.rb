@@ -35,7 +35,7 @@ module BicycleCms
         end
       end
 
-      def self.page_vars page_vars_hash = {}
+      def self.page_vars(page_vars_hash = {})
         options = page_vars_hash.slice(:only, :except)
         before_render_filter options do
           [:title, :keywords, :description, :breadcrumbs].each do |page_var_name|
@@ -51,7 +51,7 @@ module BicycleCms
     protected
 
       # TODO Перенести и обдумать
-      def self.inherited subclass
+      def self.inherited(subclass)
         super
         subclass.class_eval do
 

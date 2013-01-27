@@ -6,7 +6,7 @@ module BicycleCms
 
     include Roler
 
-    def ext_render object, options = {}, &block
+    def ext_render(object, options = {}, &block)
       object_model_names = Array.wrap( options.delete(:class_names) || (object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name } if object) ).map(&:to_s).map(&:underscore).map(&:pluralize)
       as = options.delete(:as) || (object.class.model_name.to_s.demodulize.underscore if object)
       role = options.delete(:role) || (current_user_role_for(object, owner: options.delete(:owner), roles: options.delete(:roles)) if object)
@@ -42,14 +42,14 @@ module BicycleCms
       end
     end
 
-    def render_form_for object, options = {}, &block
+    def render_form_for(object, options = {}, &block)
       capture do
         yield object if block_given?
         concat ( ext_render object, options.merge(view: 'form'), &block )
       end
     end
 
-    def render_fields_for form, options = {}, &block
+    def render_fields_for(form, options = {}, &block)
       object_model_name = form.object.class.model_name.to_s
       role = options.delete(:role) || (current_user_role_for(options[:parent]) if options.has_key?(:parent))
 
@@ -59,7 +59,7 @@ module BicycleCms
       end
     end
 
-    def render_properties_for object, properties = object.properties, options = {}
+    def render_properties_for(object, properties = object.properties, options = {})
       object_model_name = object.class.model_name.to_s
       role = options.delete(:role) || current_user_role_for(object)
       locals = options.delete(:locals) || {}
@@ -67,11 +67,11 @@ module BicycleCms
       ext_render properties, class_names: object_model_name.underscore, view: 'properties', role: role, as: :properties, locals: locals
     end
 
-    def render_breadcrumbs breadcrumbs
+    def render_breadcrumbs(breadcrumbs)
       render partial: 'breadcrumbs', object: breadcrumbs
     end
 
-    def render_spoiler more_phrase = t('application.general.more'), &block
+    def render_spoiler(more_phrase = t('application.general.more'), &block)
       content_tag :div, class: :spoiler_wrapper do
         concat ( link_to_function more_phrase, "$(this).next('.spoiler').toggle()" )
         concat ( content_tag :div, class: :spoiler, style: 'display: none;' do
@@ -81,13 +81,13 @@ module BicycleCms
     end
 
     # TODO Избавиться
-    def link_with_contenttype_icon attachment
+    def link_with_contenttype_icon(attachment)
       # TODO Случай отсутствия slug
       # FIXME иконка одна и та же
       link_to(image_tag('mimes/application-pdf.png', class: 'mime_icon_small')+attachment.slug.presense(attachment.file), attachment.file.url).html_safe
     end
 
-    def render_user_block options = {}
+    def render_user_block(options = {})
       locals = options.delete(:locals) || {}
       render partial: 'user_block', locals: locals
     end

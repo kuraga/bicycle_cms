@@ -2,7 +2,7 @@ module BicycleCms
   module Panels
     
     # TODO Выбор возвращаемых параметров (only-except)
-    def self.define_default_action_links_for object_class_name, actions = [:new, :edit, :destroy]
+    def self.define_default_action_links_for(object_class_name, actions = [:new, :edit, :destroy])
       actions.each do |action|
         case action
         when /new|edit/
@@ -19,7 +19,7 @@ module BicycleCms
       end
     end
 
-    def render_panel_for object, options = {}, &block
+    def render_panel_for(object, options = {}, &block)
       capabilities = options.delete(:capabilities) || []
       as = options.delete(:as)
 

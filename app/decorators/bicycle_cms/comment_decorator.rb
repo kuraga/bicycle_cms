@@ -9,7 +9,7 @@ module BicycleCms
       include Draper::LazyHelpers # TODO Избавиться
 
       # TODO Рассчитано на наличие commentable
-      def breadcrumbs commentable
+      def breadcrumbs(commentable)
         [ PageVars::Breadcrumb[title: t('bicycle_cms/comments.main.bicycle_cms/comments'), path: polymorphic_path([commentable, Comment])] ]
       end
 

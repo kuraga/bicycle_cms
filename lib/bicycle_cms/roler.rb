@@ -18,7 +18,7 @@ module BicycleCms
       raise "You're not admin!" unless current_user.admin? # TODO
     end
 
-    def current_user_type options = {}
+    def current_user_type(options = {})
       if signed_in_as_admin?
         :admin
       elsif signed_in?
@@ -28,7 +28,7 @@ module BicycleCms
       end
     end
 
-    def current_user_role_for object, options = {}
+    def current_user_role_for(object, options = {})
       owner = options.delete(:owner) || (object.respond_to?(:owner) ? object.owner : nil)
       roles = options.delete(:roles) || [:admin, :creator, :owner, :guest]
 
