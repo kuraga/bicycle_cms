@@ -31,9 +31,5 @@ module BicycleCms
     friendly_id :title, use: :slugged
     should_not_generate_new_friendly_id_unless_new_record_and_blank_slug!
 
-    # FIXME
-    col :product_id, as: :integer # FIXME :primary_key
-    inherits_from :product, methods: true
-
   end
 end

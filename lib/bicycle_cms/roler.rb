@@ -36,7 +36,7 @@ module BicycleCms
         ''.to_sym
       elsif roles.include?(:admin) && signed_in_as_admin?
         :admin
-      elsif roles.include?(:creator) && (object.nil? || object.try :new_record?)
+      elsif roles.include?(:creator) && (object.nil? || object.try(:new_record?))
         :creator
       elsif signed_in?
         if roles.include?(:owner) && !owner.nil? && owner == current_user

@@ -36,7 +36,7 @@ Gem::Specification.new do |specification|
   specification.add_dependency 'draper',                     '~>1.0.0'
   specification.add_dependency 'ancestry',                   '~>1.3.0'
 
-  specification.add_dependency 'haml',                       '~>3.1.7'
+  specification.add_dependency 'haml-rails',                 '~>0.3.5'
   specification.add_dependency 'formtastic',                 '~>2.2.1'
   specification.add_dependency 'nested_form',                '~>0.3.1'
 
