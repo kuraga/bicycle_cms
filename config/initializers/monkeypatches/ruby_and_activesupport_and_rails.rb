@@ -110,24 +110,49 @@ end
 module ActionView
   class PartialRenderer
 
-    def setup_with_wrapper_option(context, options, block)
-      # TODO При тако походе prefix префиксует к имени каталога, а не файла (необходимо модифицировать to_partial_path)
-      # TODO postfix, prefix могут быть Array[String]
+    def setup(context, options, block)
+      @view   = context
+      partial = options[:partial]
+      postfix = options[:postfix] ? Array.wrap(postfix).join('_') : nil
 
-      res = setup_without_wrapper_option(context, options, block)
-      return res unless @path
+      @options = options
+      @locals  = options[:locals] || {}
+      @block   = block
+      @details = extract_details(options)
 
-      # prefix = options.delete(:prefix) || options[:locals].try(:delete, :prefix)
-      postfix = options.delete(:postfix) || options[:locals].try(:delete, :postfix)
-      # @path = "#{prefix}_#{@path}" if prefix
-      @path = "#{@path}_#{postfix}" if postfix
+      if String === partial
+        @object     = options[:object]
+        @path       = partial
+        @collection = collection
+      else
+        @object = partial
 
-      res
+        if @collection = collection_from_object || collection
+          paths = @collection_data = @collection.map { |o| Proc === partial ? partial(@object) : partial_path(o) }
+          @path = paths.uniq.size == 1 ? paths.first : nil
+        else
+          @path = Proc === partial ? partial(@object) : partial_path
+        end
+      end
+
+      if @path
+        @variable, @variable_counter = retrieve_variable(postfix ? "#{@path}_#{postfix}" : @path)
+      else
+        paths.map! { |path| retrieve_variable(path).unshift(postfix ? "#{path}_#{postfix}" : path) }
+      end
+
+      if String === partial && @variable.to_s !~ /^[a-z_][a-zA-Z_0-9]*$/
+        raise ArgumentError.new("The partial name (#{partial}) is not a valid Ruby identifier; " +
+                                "make sure your partial name starts with a letter or underscore, " +
+                                "and is followed by any combinations of letters, numbers, or underscores.")
+      end
+
+      extract_format(@path, @details)
+      self
     end
 
-    alias_method_chain :setup, :wrapper_option
-
   end
+
 end
 
 
