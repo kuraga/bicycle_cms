@@ -5,7 +5,7 @@ module BicycleCms
 
     def feedback_message(feedback)
       @feedback = feedback
-      mail from: ActionMailer::Base.email_with_name(@feedback.email, @feedback.name), subject: t('bicycle_cms/feedbacks.messages.create.feedback_created', title: @feedback.title) do |format|
+      mail from: "#{@feedback.name} <#{@feedback.email}>", subject: t('bicycle_cms/feedbacks.messages.create.feedback_created', title: @feedback.title) do |format|
         format.html
       end
     end

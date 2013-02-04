@@ -5,7 +5,7 @@ module Kernel
   def callable_from_handler(handler)
     case handler
     when String
-      -> { handler }
+      lambda { handler }
     when Symbol
       method)handler)
     else
@@ -66,18 +66,6 @@ module ActiveModel
         attr_accessible(*(accessible_attributes(source_role).to_a + args), :role => role)
       end
 
-    end
-
-  end
-end
-
-
-# FIXME Избавиться
-module ActionMailer
-  class Base
-
-    def self.email_with_name(email, name)
-      "#{name} <#{email}>".html_safe
     end
 
   end

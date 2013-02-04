@@ -4,7 +4,7 @@ module BicycleCms
     include RenderCallbacks
     include Roler
 
-    default from: ActionMailer::Base.email_with_name(self.class.admin_email, self.class.admin_name)
+    default from: "#{self.class.admin_name} <#{self.class.admin_email}>"
 
     layout 'mail'
 

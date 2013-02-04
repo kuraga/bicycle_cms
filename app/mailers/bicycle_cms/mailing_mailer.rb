@@ -5,7 +5,7 @@ module BicycleCms
 
     def mailing_message(mailing, user)
       @mailing, @user = mailing, user
-      mail to: ActionMailer::Base.email_with_name(user.email, user.name), subject: t('bicycle_cms/mailings.messages.create.mailing_created', title: @mailing.title) do |format|
+      mail to: "#{@user.name} <#{@user.email}>", subject: t('bicycle_cms/mailings.messages.create.mailing_created', title: @mailing.title) do |format|
         format.html
       end
     end
