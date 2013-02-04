@@ -23,7 +23,6 @@ carrierwave - ошибки надо обрабатывать
 Некоторые поля, например, registered_at, должны выставляться в контроллере, а не передаваться через форму.
 
 underscore.pluralize -> tableize
-.coffee -> .js.coffee
 Избавиться от использования метода email_with_name
 Генераторы, templates, builders
 duck-typing: проверка параметров и ключей
