@@ -2,12 +2,12 @@
 
 module Kernel
 
-  def callable_from_handler handler
+  def callable_from_handler(handler)
     case handler
     when String
       -> { handler }
     when Symbol
-      method handler
+      method)handler)
     else
       handler
     end
@@ -22,7 +22,7 @@ class Object
     not self.nil?
   end
 
-  def presense default = nil, &block
+  def presense(default=nil, &block)
     if present? 
       block_given? ? yield(self) : self
     else
@@ -35,10 +35,10 @@ end
 
 class Array
 
-  def extract_options_by_keys! *keys
+  def extract_options_by_keys!(*keys)
     options = self.extract_options!
-    options.extract! keys if keys
-    self.push options
+    options.extract!(keys) if keys
+    self.push(options)
     options
   end
 
@@ -50,20 +50,20 @@ module ActiveModel
 
     module ClassMethods
 
-      def remove_attr_accessible *args
+      def remove_attr_accessible(*args)
         options = args.extract_options!
         role = options[:as] || :default
         source_role = options[:source_as] || role
 
-        attr_accessible *(accessible_attributes(source_role).to_a - args), role: role
+        attr_accessible(*(accessible_attributes(source_role).to_a - args), :role => role)
       end
 
-      def add_attr_accessible *args
+      def add_attr_accessible(*args)
         options = args.extract_options!
         role = options[:as] || :default
         source_role = options[:source_as] || :default
 
-        attr_accessible *(accessible_attributes(source_role).to_a + args), role: role
+        attr_accessible(*(accessible_attributes(source_role).to_a + args), :role => role)
       end
 
     end
@@ -72,11 +72,11 @@ module ActiveModel
 end
 
 
-# FIXME
+# FIXME Избавиться
 module ActionMailer
   class Base
 
-    def self.email_with_name email, name
+    def self.email_with_name(email, name)
       "#{name} <#{email}>".html_safe
     end
 

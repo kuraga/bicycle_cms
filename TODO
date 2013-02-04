@@ -22,7 +22,6 @@ disable button after submit
 carrierwave - ошибки надо обрабатывать
 Некоторые поля, например, registered_at, должны выставляться в контроллере, а не передаваться через форму.
 
-underscore.pluralize -> tableize
 Избавиться от использования метода email_with_name
 Генераторы, templates, builders
 duck-typing: проверка параметров и ключей
@@ -30,14 +29,11 @@ self, BicycleCms -> self.class
 Как правильно подключать хелпер энджина?
 Избавиться от DefaultScopes
 FriendlyId должен подключаться автоматически
-Стиль кода
 Тесты
-Комментарии кода
+Документация (комментарии кода)
 Отделить initializers в зависимости
 stringify или symbolize везде?
-file permissions
 Декорировать необходимое перед рендерингом
-freeze
 
 Внедрить гемы:
   has_scope
