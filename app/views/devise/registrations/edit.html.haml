@@ -1,6 +1,7 @@
 = semantic_nested_form_for user do |form|
   = form.inputs do
     = form.semantic_errors
+    = # devise_error_messages! # FIXME Ошибка I18n::InvalidPluralizationData
     = form.semantic_fields_for :profile do |profile_form|
       = form.input :email
       = form.input :password

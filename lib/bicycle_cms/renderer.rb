@@ -10,33 +10,25 @@ module BicycleCms
       object_model_names = Array.wrap( options.delete(:class_names) || (object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name } if object) ).map(&:to_s).map(&:underscore).map(&:pluralize)
       as = options.delete(:as) || (object.class.model_name.to_s.demodulize.underscore if object)
       role = options.delete(:role) || (current_user_role_for(object, owner: options.delete(:owner), roles: options.delete(:roles)) if object)
-      action = options.delete(:action) || ''
+      action = options.delete(:action)
       view = options.delete(:view) || ''
       locals = options.delete(:locals) || {}
-
-      partials = (object_model_names.map do |object_model_name|
-        [
-        object_model_name.underscore.presense('') { "#{object_model_name.underscore.pluralize}/" } + action.presense('') { "#{action}_" } + view.presense('') { "#{view}" } + role.presense('') { "_#{role}" },
-        object_model_name.underscore.presense('') { "#{object_model_name.underscore.pluralize}/" } + action.presense('') { "#{action}_" } + view.presense('') { "#{view}" },
-        object_model_name.underscore.presense('') { "#{object_model_name.underscore.pluralize}/" } + view.presense('') { "#{view}" } + role.presense('') { "_#{role}" },
-        object_model_name.underscore.presense('') { "#{object_model_name.underscore.pluralize}/" } + view.presense('') { "#{view}" },
-        ]
-      end.flatten +
-        [
-        action.presense('') { "#{action}_" } + view.presense('') { "#{view}" } + role.presense('') { "_#{role}" },
-        action.presense('') { "#{action}_" } + view.presense('') { "#{view}" },
-        view.presense('') { "#{view}" } + role.presense('') { "_#{role}" },
-        view.presense('') { "#{view}" }
-        ]
-      ).uniq
+      prefixes_proc = lambda do |prefixes|
+        prefixes.map do |prefix|
+          res = [prefix]
+          res << "#{role}/#{prefix}/#{action}" if role && action
+          res << "#{prefix}/#{action}" if action
+          res << "#{role}/#{prefix}" if role
+        end.flatten
+      end
 
       capture do
         yield object if block_given?
         concat ( 
           if object && as
-            render partial: partials, object: object, as: as, locals: locals
+            render partial: view.to_s, object: object, as: as, locals: locals, prefixes: prefixes_proc
           else
-            render partial: partials, locals: locals
+            render partial: view.to_s, locals: locals, prefixes: prefixes_proc
           end
         )
       end

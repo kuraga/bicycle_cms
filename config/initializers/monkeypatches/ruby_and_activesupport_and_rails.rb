@@ -15,6 +15,7 @@ module Kernel
 
 end
 
+
 class Object
 
   def not_nil?
@@ -86,13 +87,12 @@ end
 module ActionView
   class Renderer
 
-    alias_method :render_original, :render
-    def render(context, options)
+    def render_with_multiple_partials(context, options)
       if options.key?(:partial)
         err = nil
         Array.wrap(options[:partial]).each do |partial|
           begin
-            return render_original(context, options.merge({:partial => partial}))
+            return render_without_multiple_partials(context, options.merge({:partial => partial}))
           rescue ActionView::MissingTemplate => e
             err = e
           end
@@ -102,6 +102,39 @@ module ActionView
         return render_template(context, options)
       end
     end
+
+    alias_method_chain :render, :multiple_partials
+
+  end
+end
+
+
+module ActionView
+  class PartialRenderer
+
+    def find_template(path=@path, locals=@locals.keys)
+      @prefixes
+      prefixes = if @prefixes
+        @prefixes
+      else
+        path.include?(?/) ? [] : @lookup_context.prefixes
+      end
+      @lookup_context.find_template(path, prefixes, true, locals, @details)
+    end
+
+    def render_with_prefixes_option(context, options, block)
+      if options.key?(:prefixes)
+        @prefixes = @prefixes.try(:clone).tap do
+          @prefixes = options[:prefixes].call(@lookup_context.prefixes.dup)
+          res = render_without_prefixes_option(context, options, block)
+        end
+        res
+      else
+        render_without_prefixes_option(context, options, block)
+      end
+    end
+
+    alias_method_chain :render, :prefixes_option
 
   end
 end

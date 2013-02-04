@@ -1,10 +1,11 @@
 = semantic_nested_form_for feedback, url: '/feedback' do |form|
   = form.inputs do
     = form.semantic_errors
-    = form.input :name, as: :hidden, value: current_user.name
-    = form.input :email, as: :hidden, value: current_user.email
+    = form.input :name
+    = form.input :email
     = form.input :title
     = form.input :body
+    = captchator_tags
   = form.actions do
     = form.action :submit
     = form.action :cancel

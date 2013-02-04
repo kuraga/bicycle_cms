@@ -20,8 +20,8 @@ robots.txt
 Flexible exception handling
 disable button after submit
 carrierwave - ошибки надо обрабатывать
+Некоторые поля, например, registered_at, должны выставляться в контроллере, а не передаваться через форму.
 
-Переработать Renderer
 underscore.pluralize -> tableize
 .coffee -> .js.coffee
 Избавиться от использования метода email_with_name
@@ -35,10 +35,8 @@ FriendlyId должен подключаться автоматически
 Тесты
 Комментарии кода
 Отделить initializers в зависимости
-Некоторые поля, например, registered_at, должны выставляться в контроллере, а не передаваться через форму.
 stringify или symbolize везде?
 file permissions
-Отправка писем асинхронно
 Декорировать необходимое перед рендерингом
 freeze
 
@@ -49,3 +47,5 @@ freeze
   cells
   apotomo
   cancan
+  string_parameters
+  Отправка писем асинхронно
