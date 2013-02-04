@@ -14,7 +14,7 @@ module BicycleCms
 
     belongs_to :attachable, polymorphic: true
 
-    attr_accessible :file, :slug, :show_in_list, as: [:creator, :owner, :admin]
+    attr_accessible :file, :slug, :show_in_list, as: :admin
 
     extend FriendlyId
     friendly_id :file, use: :slugged

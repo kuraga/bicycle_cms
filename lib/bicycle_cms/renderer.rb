@@ -9,13 +9,13 @@ module BicycleCms
     def ext_render(object, options = {}, &block)
       object_model_names = Array.wrap( options.delete(:class_names) || (object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name } if object) ).map(&:to_s).map(&:underscore).map(&:pluralize)
       as = options.delete(:as) || (object.class.model_name.to_s.demodulize.underscore if object)
-      role = options.delete(:role) || (current_user_role_for(object, owner: options.delete(:owner), roles: options.delete(:roles)) if object)
+      role = options.delete(:role) || (current_user_role(object: object, owner: options.delete(:owner), roles: options.delete(:roles)) if object)
       action = options.delete(:action)
       view = options.delete(:view) || ''
       locals = options.delete(:locals) || {}
       prefixes_proc = lambda do |prefixes|
         prefixes.map do |prefix|
-          res = [prefix]
+          res = [ prefix ]
           res << "#{role}/#{prefix}/#{action}" if role && action
           res << "#{prefix}/#{action}" if action
           res << "#{role}/#{prefix}" if role
@@ -43,7 +43,7 @@ module BicycleCms
 
     def render_fields_for(form, options = {}, &block)
       object_model_name = form.object.class.model_name.to_s
-      role = options.delete(:role) || (current_user_role_for(options[:parent]) if options.has_key?(:parent))
+      role = options.delete(:role) || (current_user_role(object: options[:parent]) if options.has_key?(:parent))
 
       capture do
         yield object if block_given?
@@ -53,7 +53,7 @@ module BicycleCms
 
     def render_properties_for(object, properties = object.properties, options = {})
       object_model_name = object.class.model_name.to_s
-      role = options.delete(:role) || current_user_role_for(object)
+      role = options.delete(:role) || current_user_role(object: object)
       locals = options.delete(:locals) || {}
 
       ext_render properties, class_names: object_model_name.underscore, view: 'properties', role: role, as: :properties, locals: locals

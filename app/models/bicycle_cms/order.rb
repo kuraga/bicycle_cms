@@ -11,7 +11,8 @@ module BicycleCms
     col :data,       as: :text
     store :data, accessors: [ :items ]
 
-    attr_accessible :created_at, :name, :email, :comment, :items, as: [:guest, :creator, :admin]
+    attr_accessible :created_at, :name, :email, :comment, :items, as: [:user, :guest, :admin]
+    # TODO Небезопасно, так как доступео изменение чужих объектов
     default_values created_at: -> { DateTime.now }, comment: '', items: HashWithIndifferentAccess.new
 
     belongs_to :author, class_name: 'User'

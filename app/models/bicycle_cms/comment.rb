@@ -13,8 +13,9 @@ module BicycleCms
     belongs_to :commentable, polymorphic: true
     belongs_to :author, class_name: 'User'
 
-    attr_accessible :created_at, :commentable_type, :commentable_id, :author_id, :name, :email, :body, :is_published, as: [:creator, :admin]
-    remove_attr_accessible :created_at, :commentable_type, :commentable_id, :author_id, :name, :email, as: :owner, source_as: :creator
+    attr_accessible :created_at, :commentable_type, :commentable_id, :author_id, :name, :email, :body, :is_published, as: :admin
+    remove_attr_accessible :created_at, :commentable_type, :commentable_id, :author_id, :name, :email, as: [:user, :guest], source_as: :admin
+    # TODO Небезопасно, так как доступео изменение чужих объектов
 
     validates :name, presence: true,
                length: { within: 5..50 }

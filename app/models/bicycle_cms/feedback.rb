@@ -7,7 +7,8 @@ module BicycleCms
     col :title,      as: :string,    null: false, default: ''
     col :body,       as: :text,      null: false, default: ''
 
-    attr_accessible :created_at, :name, :email, :title, :body, as: [:creator, :admin]
+    attr_accessible :created_at, :name, :email, :title, :body, as: [:user, :guest, :admin]
+    # TODO Небезопасно, так как доступео изменение чужих объектов
     default_values created_at: -> { DateTime.now }, title: '', body: ''
 
     validates :name, presence: true,

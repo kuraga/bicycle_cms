@@ -11,7 +11,8 @@ module BicycleCms
     col :body,           as: :text,      null: false, default: ''
     col :is_commentable, as: :boolean,   null: false, default: true
     col :is_page,        as: :boolean,   null: false, default: false
-   attr_accessible :is_published, :published_at, :category_id, :author_id, :title, :slug, :description, :keywords, :body, :is_commentable, :is_page, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
+
+    attr_accessible :is_published, :published_at, :category_id, :author_id, :title, :slug, :description, :keywords, :body, :is_commentable, :is_page, :thumbnail, :remove_thumbnail, :attachments_attributes, as: :admin
     mount_uploader :thumbnail, ThumbnailUploader
     default_values is_published: true, published_at: -> { DateTime.now }, category_id: 1, slug: '', description: '', keywords: '', title: '', body: '', is_commentable: true, is_page: false
 

@@ -19,7 +19,7 @@ module BicycleCms
 
     has_many :comments, as: :commentable
 
-    attr_accessible :is_published, :published_at, :title, :slug, :description, :keywords, :body, :is_commentable, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
+    attr_accessible :is_published, :published_at, :title, :slug, :description, :keywords, :body, :is_commentable, :thumbnail, :remove_thumbnail, :attachments_attributes, as: :admin
 
     # FIXME
     extend FriendlyId

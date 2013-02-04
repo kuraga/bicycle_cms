@@ -21,7 +21,7 @@ module BicycleCms
     has_many :attachments, as: :attachable, dependent: :destroy
     accepts_nested_attributes_for :attachments, reject_if: proc { |attrs| attrs[:file].nil? }, allow_destroy: true
 
-    attr_accessible :is_published, :ancestry, :title, :slug, :description, :keywords, :body, :thumbnail, :remove_thumbnail, :attachments_attributes, as: [:creator, :owner, :admin]
+    attr_accessible :is_published, :ancestry, :title, :slug, :description, :keywords, :body, :thumbnail, :remove_thumbnail, :attachments_attributes, as: :admin
 
     validates :title, presence: true
     validates :slug, uniqueness: true, allow_blank: true, allow_nil: true

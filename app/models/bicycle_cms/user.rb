@@ -13,8 +13,9 @@ module BicycleCms
     delegate :name, :show_email, :gender, :avatar, to: :profile
 
     # TODO Роль :default не должна обладать правами (devise использует именно ее)
-    attr_accessible :email, :password, :password_confirmation, :profile_attributes, as: [:creator, :owner, :admin, :default]
+    attr_accessible :email, :password, :password_confirmation, :profile_attributes, as: [:admin, :default]
     add_attr_accessible :is_admin, as: :admin
+    # TODO Небезопасно, так как доступео изменение чужих объектов
     accepts_nested_attributes_for :profile, allow_destroy: true
 
     devise :database_authenticatable, :registerable

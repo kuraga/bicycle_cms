@@ -5,7 +5,7 @@ module BicycleCms
     col :title,      as: :string,    null: false, default: ''
     col :body,       as: :text,      null: false, default: ''
 
-    attr_accessible :created_at, :title, :body, as: [:creator, :admin]
+    attr_accessible :created_at, :title, :body, as: :admin
     default_values created_at: -> { DateTime.now }, title: '', body: ''
 
     validates :title, presence: true
