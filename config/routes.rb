@@ -3,7 +3,7 @@ BicycleCms::Engine.routes.draw do
   # TODO I18n
   #  localized(I18n.available_locales, verbose: true) do
 
-    root *BicycleCms.root_route
+    root *self.class.root_route
 
     get :admin_panel, to: 'system_pages#admin_panel'
 
