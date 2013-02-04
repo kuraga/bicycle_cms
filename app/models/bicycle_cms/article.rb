@@ -23,10 +23,7 @@ module BicycleCms
     has_many :comments, as: :commentable
 
     validates :title, presence: true
-    validates :slug, uniqueness: true, allow_blank: true, allow_nil: true
-
-    include DefaultScopes
-    define_default_scopes is_active: :is_published, owner: :author, created_at: :published_at
+    validates :slug,  uniqueness: true, allow_blank: true, allow_nil: true
 
     extend FriendlyId
     friendly_id :title, use: :slugged

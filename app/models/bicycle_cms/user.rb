@@ -20,8 +20,6 @@ module BicycleCms
 
     devise :database_authenticatable, :registerable
 
-    include DefaultScopes
-    define_default_scopes created_at: :created_at
     scope :admins,  -> { where{ is_admin == true    } }
     scope :females, -> { where{ gender == 'females' } }
     scope :males,   -> { where{ gender == 'males'   } }

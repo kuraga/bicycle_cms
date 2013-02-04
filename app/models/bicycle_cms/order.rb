@@ -17,10 +17,7 @@ module BicycleCms
 
     belongs_to :author, class_name: 'User'
 
-    validates :name, presence: true,
-              length: { within: 5..50 }
-    validates :email, presence: true,
-              format: { with: /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
+    validates :name, :email, presence: true
 
     def deliver
       OrderMailer.order_message(self).deliver

@@ -24,10 +24,7 @@ module BicycleCms
     attr_accessible :is_published, :ancestry, :title, :slug, :description, :keywords, :body, :thumbnail, :remove_thumbnail, :attachments_attributes, as: :admin
 
     validates :title, presence: true
-    validates :slug, uniqueness: true, allow_blank: true, allow_nil: true
-
-    include DefaultScopes
-    define_default_scopes is_active: :is_published
+    validates :slug,  uniqueness: true, allow_blank: true, allow_nil: true
 
     extend FriendlyId
     friendly_id :title, use: :slugged

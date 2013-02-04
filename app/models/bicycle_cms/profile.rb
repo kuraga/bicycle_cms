@@ -15,9 +15,7 @@ module BicycleCms
 
     belongs_to :user
 
-    validates :name, presence: true,
-               uniqueness: true,
-               length: { within: 5..50 }
+    validates :name, presence: true, uniqueness: true
     validates_inclusion_of :gender, :in => Gender # TODO Использовать validates
 
   end

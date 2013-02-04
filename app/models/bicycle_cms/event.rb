@@ -28,9 +28,6 @@ module BicycleCms
 
     validates :published_at, uniqueness: true
 
-    include DefaultScopes
-    define_default_scopes is_active: :is_published, created_at: :published_at
-
     # FIXME Переместить в декоратор
     def date_title
       l(published_at, format: :date_short) + title.presense('') { ". #{title}" }

@@ -17,10 +17,7 @@ module BicycleCms
     remove_attr_accessible :created_at, :commentable_type, :commentable_id, :author_id, :name, :email, as: [:user, :guest], source_as: :admin
     # TODO Небезопасно, так как доступео изменение чужих объектов
 
-    validates :name, presence: true,
-               length: { within: 5..50 }
-    validates :email, format: { with: /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
-    validates :body, presence: true
+    validates :name, :body, presence: true
 
     scope :anonymous, -> { where{ author_id == nil } }
     scope :publicous, -> { where{ author_id != nil } }

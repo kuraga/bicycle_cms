@@ -27,13 +27,13 @@ carrierwave - ошибки надо обрабатывать
 duck-typing: проверка параметров и ключей
 self, BicycleCms -> self.class
 Как правильно подключать хелпер энджина?
-Избавиться от DefaultScopes
-FriendlyId должен подключаться автоматически
 Тесты
 Документация (комментарии кода)
 Отделить initializers в зависимости
 stringify или symbolize везде?
 Декорировать необходимое перед рендерингом
+Validations
+Scopes
 
 Внедрить гемы:
   has_scope
