@@ -10,7 +10,7 @@ module BicycleCms
     before_filter :authenticate_admin!, except: [:show, :tree]
 
     # TODO Избавиться
-    before_render_filter(only: [:new, :edit]) { self.class.number_of_prebuild_attachments.times { resource.attachments.build } }
+    before_render_filter(only: [:new, :edit]) { BicycleCms.number_of_prebuild_attachments.times { resource.attachments.build } }
 
     # FIXME tree
 

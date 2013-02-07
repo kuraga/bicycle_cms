@@ -4,7 +4,7 @@ module BicycleCms
     include RenderCallbacks
     include Roler
 
-    default to: "#{self.class.admin_name} <#{self.class.admin_email}>"
+    default to: "#{BicycleCms.admin_name} <#{BicycleCms.admin_email}>"
 
     layout 'admin_mail'
 

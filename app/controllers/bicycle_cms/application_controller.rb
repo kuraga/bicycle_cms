@@ -10,9 +10,9 @@ module BicycleCms
     layout proc { |c| c.request.xhr? ? false : 'site' }
     helper :all
 
-    page_vars_add_description self.class.global_description
-    page_vars_add_keywords    self.class.global_keywords
-    page_vars_add_title       self.class.global_title
+    page_vars_add_description BicycleCms.global_description
+    page_vars_add_keywords    BicycleCms.global_keywords
+    page_vars_add_title       BicycleCms.global_title
     page_vars_add_breadcrumbs PageVars::Breadcrumb[title: I18n.t('application.main.main_article'), path: :root_path]
 
     protected

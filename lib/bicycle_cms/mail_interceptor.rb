@@ -3,7 +3,7 @@ module BicycleCms
 
     # TODO Как-то непонятно выглядит
     def self.delivering_email(message)
-      message.subject = "[#{self.class.hostname}] #{message.subject}"
+      message.subject = "[#{BicycleCms.hostname}] #{message.subject}"
     end
 
   end
