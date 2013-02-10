@@ -2,12 +2,7 @@ module ActionView
   class PartialRenderer
 
     def find_template(path=@path, locals=@locals.keys)
-      @prefixes
-      prefixes = if @prefixes
-        @prefixes
-      else
-        path.include?(?/) ? [] : @lookup_context.prefixes
-      end
+      prefixes = path.include?(?/) ? [] : (@prefixes ? @prefixes : @lookup_context.prefixes)
       @lookup_context.find_template(path, prefixes, true, locals, @details)
     end
 
@@ -15,9 +10,8 @@ module ActionView
       if options.key?(:prefixes)
         @prefixes = @prefixes.try(:clone).tap do
           @prefixes = options[:prefixes].call(@lookup_context.prefixes.dup)
-          res = render_without_prefixes_option(context, options, block)
+          return render_without_prefixes_option(context, options, block)
         end
-        res
       else
         render_without_prefixes_option(context, options, block)
       end

@@ -1,74 +1,45 @@
 module BicycleCms
   module Renderer
-    # TODO options должен подразумевать передачу различных опций вызываемым функциям
-    # TODO options & locals
-    # TODO нужно ли что-то делать, если нет соответствующего partial'а?
 
     include Roler
 
-    def ext_render(object, options = {}, &block)
-      object_model_names = Array.wrap( options.delete(:class_names) || (object.model_class.ancestors.select { |klass| klass.is_a? Class }.take_while { |klass| ActiveRecord::Base != klass }.map { |ancestor| ancestor.model_name } if object) ).map(&:to_s).map(&:underscore).map(&:pluralize)
-      as = options.delete(:as) || (object.class.model_name.to_s.demodulize.underscore if object)
-      role = options.delete(:role) || (current_user_role(object: object, owner: options.delete(:owner), roles: options.delete(:roles)) if object)
+    # TODO Привести прототип к Rails-форме
+    def ext_render(options = {}, &block)
       action = options.delete(:action)
-      view = options.delete(:view) || ''
-      locals = options.delete(:locals) || {}
-      prefixes_proc = lambda do |prefixes|
+      role = options.delete(:role) || current_user_role
+      options[:prefixes] = lambda do |prefixes|
         prefixes.map do |prefix|
           res = [ prefix ]
           res << "#{role}/#{prefix}/#{action}" if role && action
           res << "#{prefix}/#{action}" if action
           res << "#{role}/#{prefix}" if role
+          res
         end.flatten
       end
 
-      capture do
-        yield object if block_given?
-        concat ( 
-          if object && as
-            render partial: view.to_s, object: object, as: as, locals: locals, prefixes: prefixes_proc
-          else
-            render partial: view.to_s, locals: locals, prefixes: prefixes_proc
-          end
-        )
-      end
+      render options, &block
     end
 
     def render_form_for(object, options = {}, &block)
-      capture do
-        yield object if block_given?
-        concat ( ext_render object, options.merge(view: 'form'), &block )
-      end
+      ext_render options.reverse_merge(partial: 'form', object: object, as: object.class.model_name.to_s.demodulize.underscore), &block
     end
 
     def render_fields_for(form, options = {}, &block)
-      object_model_name = form.object.class.model_name.to_s
-      role = options.delete(:role) || (current_user_role(object: options[:parent]) if options.has_key?(:parent))
-
-      capture do
-        yield object if block_given?
-        concat ( ext_render form, options.merge(class_names: object_model_name.underscore, view: 'fields', as: "#{object_model_name.demodulize.underscore}_form") )
-      end
+      ext_render options.reverse_merge(partial: 'fields', object: form, as: :"#{form.object.class.model_name.to_s.demodulize.underscore}_form"), &block
     end
 
-    def render_properties_for(object, properties = object.properties, options = {})
-      object_model_name = object.class.model_name.to_s
-      role = options.delete(:role) || current_user_role(object: object)
-      locals = options.delete(:locals) || {}
-
-      ext_render properties, class_names: object_model_name.underscore, view: 'properties', role: role, as: :properties, locals: locals
+    def render_properties_for(object, properties = object.properties, options = {}, &block)
+      ext_render options.reverse_merge(partial: 'properties', object: properties, as: :properties), &block
     end
 
     def render_breadcrumbs(breadcrumbs)
-      render partial: 'breadcrumbs', object: breadcrumbs
+      render partial: 'breadcrumbs', object: breadcrumbs, as: :breadcrumbs
     end
 
     def render_spoiler(more_phrase = t('application.general.more'), &block)
       content_tag :div, class: :spoiler_wrapper do
-        concat ( link_to_function more_phrase, "$(this).next('.spoiler').toggle()" )
-        concat ( content_tag :div, class: :spoiler, style: 'display: none;' do
-          yield
-        end )
+        concat ( link_to_function more_phrase, "$(this).next('.spoiler').toggle();" )
+        concat ( content_tag :div, class: :spoiler, style: 'display: none;', &block )
       end
     end
 
@@ -80,8 +51,7 @@ module BicycleCms
     end
 
     def render_user_block(options = {})
-      locals = options.delete(:locals) || {}
-      render partial: 'user_block', locals: locals
+      render options.reverse_merge(partial: 'user_block')
     end
 
   end

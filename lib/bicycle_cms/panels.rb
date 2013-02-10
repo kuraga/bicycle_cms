@@ -21,13 +21,13 @@ module BicycleCms
 
     def render_panel_for(object, options = {}, &block)
       capabilities = options.delete(:capabilities) || []
-      as = options.delete(:as)
+      locals = options.delete(:locals) || {}
 
       content_tag :span, class: (block_given? ? :actions_with_sign : :actions_without_sign) do
         capture do
           yield object if block_given?
           concat ( content_tag :span, class: :actions do
-            ext_render object, view: :panel, as: as, locals: options
+            ext_render options.reverse_merge(object: object, partial: 'panel', locals: locals.reverse_merge(capabilities: capabilities))
           end )
         end
       end
