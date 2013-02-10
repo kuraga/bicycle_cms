@@ -35,7 +35,7 @@ module BicycleCms
       [
         PageVars::Property[name: :description,  label: t('bicycle_cms/categories.attributes.description'),  value: description],
         PageVars::Property[name: :keywords,     label: t('bicycle_cms/categories.attributes.keywords'),     value: keywords   ],
-        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: attachments.select(&:show_in_list).collect { |attachment| link_with_contenttype_icon attachment }]
+        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: attachments.select(&:show_in_list).collect { |attachment| link_to attachment.slug.presense(attachment.file), attachment.file.url }]
       ]
     end
 

@@ -43,13 +43,6 @@ module BicycleCms
       end
     end
 
-    # TODO Избавиться
-    def link_with_contenttype_icon(attachment)
-      # TODO Случай отсутствия slug
-      # FIXME иконка одна и та же
-      link_to(image_tag('mimes/application-pdf.png', class: 'mime_icon_small')+attachment.slug.presense(attachment.file), attachment.file.url).html_safe
-    end
-
     def render_user_block(options = {})
       render options.reverse_merge(partial: 'user_block')
     end

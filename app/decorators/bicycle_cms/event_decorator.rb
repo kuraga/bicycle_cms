@@ -22,7 +22,7 @@ module BicycleCms
     def properties(options = {})
       [
         PageVars::Property[name: :published_at, label: t('bicycle_cms/events.attributes.published_at'),     value: l(published_at, format: :date_full)],
-        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: attachments.select(&:show_in_list).collect { |attachment| link_with_contenttype_icon attachment } ]
+        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: attachments.select(&:show_in_list).collect { |attachment| link_to attachment.slug.presense(attachment.file), attachment.file.url } ]
       ]
     end
 

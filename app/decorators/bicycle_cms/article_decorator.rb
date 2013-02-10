@@ -25,7 +25,7 @@ module BicycleCms
         PageVars::Property[name: :published_at, label: t('bicycle_cms/articles.attributes.published_at'),   value: l(published_at, format: :date_full)],
         PageVars::Property[name: :description,  label: t('bicycle_cms/articles.attributes.description'),    value: description                        ],
         PageVars::Property[name: :keywords,     label: t('bicycle_cms/articles.attributes.keywords'),       value: keywords                           ],
-        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: (attachments.select { |attachment| attachment.show_in_list }).collect { |attachment| link_with_contenttype_icon attachment }]
+        PageVars::Property[name: :attachments,  label: t('bicycle_cms/attachments.attributes.attachments'), value: (attachments.select { |attachment| attachment.show_in_list }).collect { |attachment| link_to attachment.slug.presense(attachment.file), attachment.file.url }]
       ]
     end
 
