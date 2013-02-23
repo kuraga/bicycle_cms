@@ -6,10 +6,12 @@ module BicycleCms
     # TODO Привести прототип к Rails-форме
     def ext_render(options = {}, &block)
       action = options.delete(:action)
+      path = options.delete(:path)
       role = options.delete(:role) || current_user_role
       options[:prefixes] = lambda do |prefixes|
         prefixes.map do |prefix|
           res = [ prefix ]
+          res << prefix = path if path
           res << "#{role}/#{prefix}/#{action}" if role && action
           res << "#{prefix}/#{action}" if action
           res << "#{role}/#{prefix}" if role
@@ -21,15 +23,15 @@ module BicycleCms
     end
 
     def render_form_for(object, options = {}, &block)
-      ext_render options.reverse_merge(partial: 'form', object: object, as: object.class.model_name.to_s.demodulize.underscore), &block
+      ext_render options.reverse_merge(path: object.class.model_name.to_s.tableize, partial: 'form', object: object, as: object.class.model_name.to_s.demodulize.underscore), &block
     end
 
     def render_fields_for(form, options = {}, &block)
-      ext_render options.reverse_merge(partial: 'fields', object: form, as: :"#{form.object.class.model_name.to_s.demodulize.underscore}_form"), &block
+      ext_render options.reverse_merge(path: form.object.class.model_name.to_s.tableize, partial: 'fields', object: form, as: :"#{form.object.class.model_name.to_s.demodulize.underscore}_form"), &block
     end
 
     def render_properties_for(object, properties = object.properties, options = {}, &block)
-      ext_render options.reverse_merge(partial: 'properties', object: properties, as: :properties), &block
+      ext_render options.reverse_merge(path: object.class.model_name.to_s.tableize, partial: 'properties', object: properties, as: :properties), &block
     end
 
     def render_breadcrumbs(breadcrumbs)
@@ -44,7 +46,7 @@ module BicycleCms
     end
 
     def render_user_block(options = {})
-      render options.reverse_merge(partial: 'user_block')
+      ext_render options.reverse_merge(partial: 'user_block')
     end
 
   end

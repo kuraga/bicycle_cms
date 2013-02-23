@@ -14,8 +14,8 @@ Gem::Specification.new do |specification|
   specification.files = Dir["{app,config,lib}/**/*"] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
   specification.test_files = []
 
-  specification.add_dependency 'activesupport',              '~> 3.2.11'
-  specification.add_dependency 'rails',                      '~> 3.2.11'
+  specification.add_dependency 'activesupport',              '~>3.2.12'
+  specification.add_dependency 'rails',                      '~>3.2.12'
 
   specification.add_dependency 'sass-rails',                 '~>3.2.6'
   specification.add_dependency 'jquery-rails',               '~>2.2.0'
@@ -33,7 +33,7 @@ Gem::Specification.new do |specification|
 
   specification.add_dependency 'inherited_resources',        '~>1.3.1' # FIXME На github'е много новых патчей
   specification.add_dependency 'responders',                 '~>0.9.3'
-  specification.add_dependency 'draper',                     '~>1.0.0'
+  specification.add_dependency 'draper',                     '~>1.1.0'
   specification.add_dependency 'ancestry',                   '~>1.3.0'
 
   specification.add_dependency 'haml-rails',                 '~>0.3.5'
@@ -45,5 +45,5 @@ Gem::Specification.new do |specification|
   specification.add_dependency 'carrierwave',                '~>0.6.0' # FIXME '~>0.8.0'
   specification.add_dependency 'mini_magick',                '~>3.4'
 
-  specification.add_dependency 'aloha-rails-improved' # FIXME версия
+  specification.add_dependency 'aloha-rails-improved',       '~>0.1.0'
 end

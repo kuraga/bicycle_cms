@@ -24,11 +24,8 @@ module BicycleCms
       locals = options.delete(:locals) || {}
 
       content_tag :span, class: (block_given? ? :actions_with_sign : :actions_without_sign) do
-        capture do
-          yield object if block_given?
-          concat ( content_tag :span, class: :actions do
-            ext_render options.reverse_merge(object: object, partial: 'panel', locals: locals.reverse_merge(capabilities: capabilities))
-          end )
+        content_tag :span, class: :actions do
+          ext_render options.reverse_merge(path: object.class.model_name.to_s.tableize, partial: 'panel', object: object, as: object.class.model_name.to_s.demodulize.underscore, locals: locals.reverse_merge(capabilities: capabilities)), &block
         end
       end
     rescue ActionView::MissingTemplate
